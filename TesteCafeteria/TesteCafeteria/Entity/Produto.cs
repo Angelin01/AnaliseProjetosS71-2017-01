@@ -23,9 +23,9 @@ namespace TesteCafeteria.Entity
             this.Id = id;
         }
 
-        public void registrarProduto() { }
-        public void editarProduto() { }
-        public void deletarProduto() { }
-        public void verificarRegrasDeNegocio { }
+        public void RegistrarProduto() { }
+        public void EditarProduto() { }
+        public void DeletarProduto() { }
+        public void VerificarRegrasDeNegocio() { }
     }
 }

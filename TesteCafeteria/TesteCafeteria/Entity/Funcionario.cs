@@ -61,9 +61,9 @@ namespace TesteCafeteria
 
 
         // Métodos
-        public void cadastrarDadosFuncionario() { }
-        public void editarDadosFuncionario() { }
-        public void deletarDadosFuncionario() { }
-        public void verificarRegraDeNegocio() { }
+        public void CadastrarDadosFuncionario() { }
+        public void EditarDadosFuncionario() { }
+        public void DeletarDadosFuncionario() { }
+        public void VerificarRegraDeNegocio() { }
     }
 }
