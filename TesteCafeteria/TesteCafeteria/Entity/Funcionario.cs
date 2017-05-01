@@ -61,11 +61,9 @@ namespace TesteCafeteria
 
 
         // Métodos
-#pragma warning disable IDE1006 // Estilos de Nomenclatura
         public void cadastrarDadosFuncionario() { }
         public void editarDadosFuncionario() { }
         public void deletarDadosFuncionario() { }
         public void verificarRegraDeNegocio() { }
-#pragma warning restore IDE1006 // Estilos de Nomenclatura
     }
 }
