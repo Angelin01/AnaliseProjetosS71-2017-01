@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TesteCafeteria.Entity
+{
+    class TransacaoPedido : ITransacao
+    {
+        private int valor;
+        private DateTime data;
+
+        public int Valor { get => valor; set => valor = value; }
+        public DateTime Data { get => data; set => data = value; }
+    }
+}
