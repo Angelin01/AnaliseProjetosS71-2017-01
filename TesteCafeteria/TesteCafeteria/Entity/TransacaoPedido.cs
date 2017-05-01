@@ -11,6 +11,12 @@ namespace TesteCafeteria.Entity
         private int valor;
         private DateTime data;
 
+        public TransacaoPedido(int valor, DateTime data)
+        {
+            this.valor = valor;
+            this.data = data;
+        }
+
         public int Valor { get => valor; set => valor = value; }
         public DateTime Data { get => data; set => data = value; }
     }

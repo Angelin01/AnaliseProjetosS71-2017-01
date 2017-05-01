@@ -21,7 +21,7 @@ namespace TesteCafeteria
         protected string emailAlternativo;
         protected string login;
         protected string senha;
-        protected float salario;
+        protected int salario;
         protected string cargo;
 
         public string Nome { get => nome; set => nome = value; }
@@ -37,10 +37,10 @@ namespace TesteCafeteria
         public string EmailAlternativo { get => emailAlternativo; set => emailAlternativo = value; }
         public string Login { get => login; set => login = value; }
         public string Senha { get => senha; set => senha = value; }
-        public float Salario { get => salario; set => salario = value; }
+        public int Salario { get => salario; set => salario = value; }
         public string Cargo { get => cargo; set => cargo = value; }
 
-        public Funcionario(string nome, string nomeMae, string nomePai, string cpf, string rg, string ctps, string endereco, string telefonePrincipal, string telefoneCelular, string emailPrincipal, string emailAlternativo, string login, string senha, float salario, string cargo)
+        public Funcionario(string nome, string nomeMae, string nomePai, string cpf, string rg, string ctps, string endereco, string telefonePrincipal, string telefoneCelular, string emailPrincipal, string emailAlternativo, string login, string senha, int salario, string cargo)
         {
             this.Nome = nome;
             this.NomeMae = nomeMae;
