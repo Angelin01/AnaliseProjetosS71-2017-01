@@ -95,7 +95,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Administrador.cs" />
     <Compile Include="Entity\Funcionario.cs" />
+    <Compile Include="Entity\Pedido.cs" />
+    <Compile Include="Entity\Produto.cs" />
+    <Compile Include="Entity\Recurso.cs" />
+    <Compile Include="Entity\RelatorioOrcamentario.cs" />
     <Compile Include="Entity\Transacao.cs" />
     <Compile Include="Entity\TransacaoAdm.cs" />
     <Compile Include="Entity\TransacaoPedido.cs" />
