@@ -8,7 +8,7 @@
         Title="AdicionaProdutoPedido" Height="300" Width="300" ResizeMode="NoResize">
     <Grid Height="300" Width="300">
         <Label Content="Produto" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" Height="33" FontSize="14"/>
-        <ComboBox HorizontalAlignment="Left" Margin="96,76,0,0" VerticalAlignment="Top" Width="186">
+        <ComboBox HorizontalAlignment="Left" Margin="96,76,0,0" VerticalAlignment="Top" Width="186" SelectionChanged="ComboBox_SelectionChanged">
             <ComboBoxItem Content="Espresso pequeno" HorizontalAlignment="Left" Width="184" Selected="ComboBoxItem_Espresso" FontFamily="Nirmala UI Semilight"/>
             <ComboBoxItem Content="Macchiatto médio" HorizontalAlignment="Left" Width="184" FontFamily="Nirmala UI Semilight" Selected="ComboBoxItem_Macchiatto"/>
         </ComboBox>

@@ -23,5 +23,20 @@ namespace InterfaceWpf
         {
             InitializeComponent();
         }
+
+        private void Button_AdicionaIngrediente(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Finaliza(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void examList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

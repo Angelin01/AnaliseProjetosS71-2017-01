@@ -23,5 +23,10 @@ namespace InterfaceWpf
         {
             InitializeComponent();
         }
+
+        private void Button_Confirma(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

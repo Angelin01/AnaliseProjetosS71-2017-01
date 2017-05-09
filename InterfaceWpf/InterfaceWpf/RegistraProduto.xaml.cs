@@ -38,5 +38,10 @@ namespace InterfaceWpf
         {
 
         }
+
+        private void examList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
