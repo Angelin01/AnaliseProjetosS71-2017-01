@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TesteCafeteria.Entity {
+namespace InterfaceWpf.Entity {
     class Recurso {
         private int idRecurso;
         private string nome;

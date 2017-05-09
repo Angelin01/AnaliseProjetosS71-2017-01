@@ -54,11 +54,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\AutenticarSingleton.cs" />
+    <Compile Include="Entity\Administrador.cs" />
+    <Compile Include="Entity\Funcionario.cs" />
+    <Compile Include="Entity\Pedido.cs" />
+    <Compile Include="Entity\Produto.cs" />
+    <Compile Include="Entity\Recurso.cs" />
+    <Compile Include="Entity\RelatorioOrcamentario.cs" />
+    <Compile Include="Entity\Transacao.cs" />
+    <Compile Include="Entity\TransacaoAdm.cs" />
+    <Compile Include="Entity\TransacaoPedido.cs" />
     <Compile Include="Interface\AdicionaProdutoPedido.xaml.cs">
       <DependentUpon>AdicionaProdutoPedido.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interface\AdicionaTransação.xaml.cs">
       <DependentUpon>AdicionaTransação.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Autenticar.xaml.cs">
+      <DependentUpon>Autenticar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interface\EditaIngrediente.xaml.cs">
       <DependentUpon>EditaIngrediente.xaml</DependentUpon>
@@ -72,15 +85,9 @@
     <Compile Include="Interface\EditarPedido.xaml.cs">
       <DependentUpon>EditarPedido.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Administrador.cs" />
-    <Compile Include="Entity\Funcionario.cs" />
-    <Compile Include="Entity\Pedido.cs" />
-    <Compile Include="Entity\Produto.cs" />
-    <Compile Include="Entity\Recurso.cs" />
-    <Compile Include="Entity\RelatorioOrcamentario.cs" />
-    <Compile Include="Entity\Transacao.cs" />
-    <Compile Include="Entity\TransacaoAdm.cs" />
-    <Compile Include="Entity\TransacaoPedido.cs" />
+    <Compile Include="Interface\InicioFuncionario.xaml.cs">
+      <DependentUpon>InicioFuncionario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interface\RegistraIngrediente.xaml.cs">
       <DependentUpon>RegistraIngrediente.xaml</DependentUpon>
     </Compile>
@@ -136,6 +143,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Interface\Autenticar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Interface\EditaIngrediente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Interface\EditarPedido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interface\InicioFuncionario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
