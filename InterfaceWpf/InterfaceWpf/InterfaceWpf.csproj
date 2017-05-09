@@ -54,41 +54,50 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AdicionaProdutoPedido.xaml.cs">
+    <Compile Include="Interface\AdicionaProdutoPedido.xaml.cs">
       <DependentUpon>AdicionaProdutoPedido.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdicionaTransação.xaml.cs">
+    <Compile Include="Interface\AdicionaTransação.xaml.cs">
       <DependentUpon>AdicionaTransação.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditaIngrediente.xaml.cs">
+    <Compile Include="Interface\EditaIngrediente.xaml.cs">
       <DependentUpon>EditaIngrediente.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditaProduto.xaml.cs">
+    <Compile Include="Interface\EditaProduto.xaml.cs">
       <DependentUpon>EditaProduto.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditaQuantidadePedido.xaml.cs">
+    <Compile Include="Interface\EditaQuantidadePedido.xaml.cs">
       <DependentUpon>EditaQuantidadePedido.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditarPedido.xaml.cs">
+    <Compile Include="Interface\EditarPedido.xaml.cs">
       <DependentUpon>EditarPedido.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegistraIngrediente.xaml.cs">
+    <Compile Include="Entity\Administrador.cs" />
+    <Compile Include="Entity\Funcionario.cs" />
+    <Compile Include="Entity\Pedido.cs" />
+    <Compile Include="Entity\Produto.cs" />
+    <Compile Include="Entity\Recurso.cs" />
+    <Compile Include="Entity\RelatorioOrcamentario.cs" />
+    <Compile Include="Entity\Transacao.cs" />
+    <Compile Include="Entity\TransacaoAdm.cs" />
+    <Compile Include="Entity\TransacaoPedido.cs" />
+    <Compile Include="Interface\RegistraIngrediente.xaml.cs">
       <DependentUpon>RegistraIngrediente.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegistraPedido.xaml.cs">
+    <Compile Include="Interface\RegistraPedido.xaml.cs">
       <DependentUpon>RegistraPedido.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegistraProduto.xaml.cs">
+    <Compile Include="Interface\RegistraProduto.xaml.cs">
       <DependentUpon>RegistraProduto.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EditaFuncionario.xaml.cs">
+    <Compile Include="Interface\EditaFuncionario.xaml.cs">
       <DependentUpon>EditaFuncionario.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RemoveProdutoPedido.xaml.cs">
+    <Compile Include="Interface\RemoveProdutoPedido.xaml.cs">
       <DependentUpon>RemoveProdutoPedido.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -119,50 +128,51 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="AdicionaProdutoPedido.xaml">
+    <Page Include="Interface\AdicionaProdutoPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdicionaTransação.xaml">
+    <Page Include="Interface\AdicionaTransação.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditaIngrediente.xaml">
+    <Page Include="Interface\EditaIngrediente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditaProduto.xaml">
+    <Page Include="Interface\EditaProduto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditaQuantidadePedido.xaml">
+    <Page Include="Interface\EditaQuantidadePedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditarPedido.xaml">
+    <Page Include="Interface\EditarPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RegistraIngrediente.xaml">
+    <Page Include="Interface\RegistraIngrediente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RegistraPedido.xaml">
+    <Page Include="Interface\RegistraPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RegistraProduto.xaml">
+    <Page Include="Interface\RegistraProduto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditaFuncionario.xaml">
+    <Page Include="Interface\EditaFuncionario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RemoveProdutoPedido.xaml">
+    <Page Include="Interface\RemoveProdutoPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
