@@ -73,6 +73,21 @@
     <Compile Include="Interface\Autenticar.xaml.cs">
       <DependentUpon>Autenticar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interface\ConsultaFuncionario.xaml.cs">
+      <DependentUpon>ConsultaFuncionario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\ConsultaIngrediente.xaml.cs">
+      <DependentUpon>ConsultaIngrediente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\ConsultaPedido.xaml.cs">
+      <DependentUpon>ConsultaPedido.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\ConsultaProduto.xaml.cs">
+      <DependentUpon>ConsultaProduto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\ConsultaRelatorio.xaml.cs">
+      <DependentUpon>ConsultaRelatorio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interface\EditaIngrediente.xaml.cs">
       <DependentUpon>EditaIngrediente.xaml</DependentUpon>
     </Compile>
@@ -84,6 +99,9 @@
     </Compile>
     <Compile Include="Interface\EditarPedido.xaml.cs">
       <DependentUpon>EditarPedido.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\InicioAdministracao.xaml.cs">
+      <DependentUpon>InicioAdministracao.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interface\InicioFuncionario.xaml.cs">
       <DependentUpon>InicioFuncionario.xaml</DependentUpon>
@@ -147,6 +165,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Interface\ConsultaFuncionario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interface\ConsultaIngrediente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interface\ConsultaPedido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interface\ConsultaProduto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interface\ConsultaRelatorio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Interface\EditaIngrediente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -160,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Interface\EditarPedido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interface\InicioAdministracao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
