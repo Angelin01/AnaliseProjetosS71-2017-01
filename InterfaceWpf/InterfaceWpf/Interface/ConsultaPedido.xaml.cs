@@ -39,5 +39,25 @@ namespace InterfaceWpf.Interface
             this.Close();
             App.Current.MainWindow.Show();
         }
-    }
+
+		private void Button_Edit(object sender, RoutedEventArgs e)
+		{
+			Window main_window = new EditarPedido();
+			App.Current.MainWindow = main_window;
+			this.Close();
+			App.Current.MainWindow.Show();
+		}
+
+		private void Button_Cancel(object sender, RoutedEventArgs e)
+		{
+			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja cancelar o pedido?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+			if (messageBoxResult == MessageBoxResult.No) return;
+		}
+
+		private void Button_Finish(object sender, RoutedEventArgs e)
+		{
+			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja encerrar o pedido?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+			if (messageBoxResult == MessageBoxResult.No) return;
+		}
+	}
 }

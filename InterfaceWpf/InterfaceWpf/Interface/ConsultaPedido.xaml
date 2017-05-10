@@ -31,7 +31,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <Button Content="Edita" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"/>
+                                    <Button Content="Edita" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Click="Button_Edit"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -42,8 +42,8 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <Button Content="Cancela" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"/>
-                                </StackPanel>
+									<Button Content="Cancela" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Click="Button_Cancel"/>
+								</StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -51,7 +51,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <Button Content="Encerra" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"/>
+                                    <Button Content="Encerra" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Click="Button_Finish"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>

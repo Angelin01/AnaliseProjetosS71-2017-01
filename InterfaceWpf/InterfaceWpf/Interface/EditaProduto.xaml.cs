@@ -24,7 +24,12 @@ namespace InterfaceWpf
         public EditaProduto()
         {
             InitializeComponent();
-        }
+
+			List<IngrProduto> items = new List<IngrProduto>();
+			items.Add(new IngrProduto() { Ingrediente = "Ingredientes de teste", Quantidade = 14});
+			examList.ItemsSource = items;
+		}
+
         private void Button_Cancela(object sender, RoutedEventArgs e) {
             AutenticarSingleton user = AutenticarSingleton.Instance;
 
@@ -42,16 +47,27 @@ namespace InterfaceWpf
         private void Button_AdicionaIngrediente(object sender, RoutedEventArgs e)
         {
 
-        }
+		}
 
         private void Button_Finaliza(object sender, RoutedEventArgs e)
         {
+			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja confirmar a edição?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+			if (messageBoxResult == MessageBoxResult.No) return;
 
-        }
+			App.Current.MainWindow = new ConsultaProduto();
+			this.Close();
+			App.Current.MainWindow.Show();
+		}
 
         private void examList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
     }
+
+	public class IngrProduto
+	{
+		public string Ingrediente { get; set; }
+		public int Quantidade { get; set; }
+	}
 }

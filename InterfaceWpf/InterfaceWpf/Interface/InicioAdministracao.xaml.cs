@@ -42,10 +42,10 @@ namespace InterfaceWpf.Interface
 
         private void RegistrarFuncionario(object sender, RoutedEventArgs e)
         {
-            //Window main_window = new RegistraFuncionario();
-            //App.Current.MainWindow = main_window;
-            //this.Close();
-            //App.Current.MainWindow.Show();
+            Window main_window = new EditaFuncionario();
+            App.Current.MainWindow = main_window;
+            this.Close();
+            App.Current.MainWindow.Show();
         }
 
         private void ConsultarFuncionarios(object sender, RoutedEventArgs e)

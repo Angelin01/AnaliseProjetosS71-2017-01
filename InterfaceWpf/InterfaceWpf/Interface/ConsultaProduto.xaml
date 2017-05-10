@@ -25,33 +25,32 @@
             </Label.OpacityMask>
         </Label>
         <ListView Margin="10,47,10,50" Name="lvUsers" Grid.Row="1">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="" Width="150" >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <Button Content="Edita" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Nome" Width="300" DisplayMemberBinding="{Binding Nome}" />
-                    <GridViewColumn Header="Preço" Width="150" DisplayMemberBinding="{Binding PReco}" />
-                    <GridViewColumn Header="Ingredientes" Width="150" DisplayMemberBinding="{Binding Ingredientes}" />
-                    <GridViewColumn Header="" Width="150" >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <Button Content="Remove" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-            <ListViewItem Content="ListViewItem"/>
-        </ListView>
+			<ListView.View>
+				<GridView>
+					<GridViewColumn Header="" Width="150" >
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<StackPanel>
+									<Button Content="Edita" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Click="Button_Edit"/>
+								</StackPanel>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+					<GridViewColumn Header="Nome" Width="300" DisplayMemberBinding="{Binding Nome}" />
+					<GridViewColumn Header="Preço" Width="150" DisplayMemberBinding="{Binding PReco}" />
+					<GridViewColumn Header="Ingredientes" Width="150" DisplayMemberBinding="{Binding Ingredientes}" />
+					<GridViewColumn Header="" Width="150" >
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<StackPanel>
+									<Button Content="Remove" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"/>
+								</StackPanel>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+				</GridView>
+			</ListView.View>
+		</ListView>
         <Button Content="Voltar" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="76" Click="Button_Click"/>
 
     </Grid>

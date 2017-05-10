@@ -23,6 +23,10 @@ namespace InterfaceWpf.Interface
         public ConsultaProduto()
         {
             InitializeComponent();
+
+			List<Produto> items = new List<Produto>();
+			items.Add(new Produto() { Nome = "Produto Teste", PReco = 42, Ingredientes = "Ingredientes de teste" });
+			lvUsers.ItemsSource = items;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
@@ -39,5 +43,20 @@ namespace InterfaceWpf.Interface
             this.Close();
             App.Current.MainWindow.Show();
         }
+
+		private void Button_Edit(object sender, RoutedEventArgs e)
+		{
+			App.Current.MainWindow = new EditaProduto();
+			this.Close();
+			App.Current.MainWindow.Show();
+		}
     }
+
+	// Temporário
+	public class Produto
+	{
+		public string Nome { get; set; }
+		public int PReco { get; set; }
+		public string Ingredientes { get; set; }
+	}
 }

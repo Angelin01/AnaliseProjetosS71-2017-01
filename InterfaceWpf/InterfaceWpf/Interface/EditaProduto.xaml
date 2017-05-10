@@ -24,16 +24,13 @@
         <Button Content="Adiciona ingrediente" HorizontalAlignment="Left" Margin="70,237,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_AdicionaIngrediente" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
         <Button Content="Confirma" HorizontalAlignment="Left" Margin="70,404,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_Finaliza" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
         <ListView x:Name="examList" SelectionMode="Single" Margin="322,173,56,183" SelectionChanged="examList_SelectionChanged">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Ingrediente" Width="250"/>
-                    <GridViewColumn Header="Quantidade" Width="250"/>
-                </GridView>
-            </ListView.View>
-            <ListViewItem Content="" Margin="0"/>
-
-
-        </ListView>
+			<ListView.View>
+				<GridView>
+					<GridViewColumn Header="Ingrediente" Width="250" DisplayMemberBinding="{Binding Ingrediente}"/>
+					<GridViewColumn Header="Quantidade" Width="250" DisplayMemberBinding="{Binding Quantidade}"/>
+				</GridView>
+			</ListView.View>
+		</ListView>
         <Button Content="Cancelar" HorizontalAlignment="Left" Margin="70,319,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_Cancela" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
 
     </Grid>
