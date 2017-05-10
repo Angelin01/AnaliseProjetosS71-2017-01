@@ -166,24 +166,24 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Interface\ConsultaFuncionario.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Interface\ConsultaIngrediente.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Interface\ConsultaPedido.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Interface\ConsultaProduto.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Interface\ConsultaRelatorio.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Interface\EditaIngrediente.xaml">
       <SubType>Designer</SubType>
@@ -202,8 +202,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Interface\InicioAdministracao.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Interface\InicioFuncionario.xaml">
       <SubType>Designer</SubType>

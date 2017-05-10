@@ -43,11 +43,16 @@ namespace InterfaceWpf.Interface
             user.Login = _login;
             user.Password = _password;
 
+            Window main_window;
             // Fazer login (trocar tela)
-            //Window main_window = new EditaFuncionario();
-            //App.Current.MainWindow = main_window;
+            if (user.Login == "admin") {
+                main_window = new InicioAdministracao();
+            }
+            else {
+                main_window = new InicioFuncionario();
+            }
+            App.Current.MainWindow = main_window;
             this.Close();
-            //main_window.Show();
             App.Current.MainWindow.Show();
         }
     }

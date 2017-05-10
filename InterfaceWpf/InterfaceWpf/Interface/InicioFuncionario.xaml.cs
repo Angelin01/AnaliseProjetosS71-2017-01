@@ -32,12 +32,18 @@ namespace InterfaceWpf.Interface
 
         private void RegistrarPedido(object sender, RoutedEventArgs e)
         {
-
+            Window main_window = new RegistraPedido();
+            App.Current.MainWindow = main_window;
+            this.Close();
+            App.Current.MainWindow.Show();
         }
 
         private void ConsultarPedidos(object sender, RoutedEventArgs e)
         {
-
+            Window main_window = new ConsultaPedido();
+            App.Current.MainWindow = main_window;
+            this.Close();
+            App.Current.MainWindow.Show();
         }
 
         bool _shown;
