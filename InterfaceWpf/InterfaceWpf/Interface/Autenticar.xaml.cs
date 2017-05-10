@@ -26,17 +26,20 @@ namespace InterfaceWpf.Interface
         public Autenticar()
         {
             InitializeComponent();
+			input_login.Focus();
         }
 
         private void AutenticarUsuario(object sender, RoutedEventArgs e)
-        {
+		{ 
             // Pegar as informações dos inputs (textbox)
             String _login = input_login.Text.ToString();
-            String _password = input_password.Text.ToString();
+            String _password = input_password.Password.ToString();
 
-            // Checar se login é válido
-            if ((_login == "") || (_password == ""))
-                return;
+			// Checar se login é válido
+			if ((_login == "") || (_password == "")) {
+				MessageBox.Show("Login ou senha inválidos.", "Falha no login");
+				return;
+			}
 
             AutenticarSingleton user = AutenticarSingleton.Instance;
 
@@ -55,5 +58,14 @@ namespace InterfaceWpf.Interface
             this.Close();
             App.Current.MainWindow.Show();
         }
+
+		private void AutenticarEnter(object sender, KeyEventArgs e)
+		{
+			if(e.Key == Key.Return) {
+				AutenticarUsuario(null, null);
+				e.Handled = true;
+			}
+		}
+
     }
 }

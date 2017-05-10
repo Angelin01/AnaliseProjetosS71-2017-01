@@ -38,7 +38,7 @@
                 Width="500" Height="50" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Click="AutenticarUsuario"/>
         <TextBox x:Name="input_login" Text="" TextWrapping="Wrap" FontFamily="Nirmala UI Semilight" FontSize="20"
                 Width="220" Height="40" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-        <TextBox x:Name="input_password" Text="" TextWrapping="Wrap" FontFamily="Nirmala UI Semilight" FontSize="20"
+        <PasswordBox x:Name="input_password" FontFamily="Nirmala UI Semilight" FontSize="20" PreviewKeyDown="AutenticarEnter"
                 Width="220" Height="40" Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <Label Content="Login:" FontFamily="Nirmala UI Semilight" FontSize="20" FontWeight="Bold" Foreground="White" Background="#FF64B4EA"
                 Width="220" Height="40" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right"
