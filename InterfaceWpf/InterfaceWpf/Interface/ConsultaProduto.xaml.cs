@@ -50,6 +50,12 @@ namespace InterfaceWpf.Interface
 			this.Close();
 			App.Current.MainWindow.Show();
 		}
+
+		private void Button_Remove(object sender, RoutedEventArgs e)
+		{
+			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente remover o produto?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+			if (messageBoxResult == MessageBoxResult.No) return;
+		}
     }
 
 	// Temporário

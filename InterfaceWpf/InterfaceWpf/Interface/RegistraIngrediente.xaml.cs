@@ -41,7 +41,21 @@ namespace InterfaceWpf
         }
         private void Button_Confirma(object sender, RoutedEventArgs e)
         {
+			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Confirma os dados inseridos?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+			if (messageBoxResult == MessageBoxResult.Yes) {
+				AutenticarSingleton user = AutenticarSingleton.Instance;
 
-        }
+				Window main_window;
+				if (user.Login == "admin") {
+					main_window = new InicioAdministracao();
+				}
+				else {
+					main_window = new InicioFuncionario();
+				}
+				App.Current.MainWindow = main_window;
+				this.Close();
+				App.Current.MainWindow.Show();
+			}
+		}
     }
 }

@@ -39,19 +39,29 @@ namespace InterfaceWpf
             this.Close();
             App.Current.MainWindow.Show();
         }
-        private void Button_AdicionaProd(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Button_Finaliza(object sender, RoutedEventArgs e)
         {
+			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Confirma os dados inseridos?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+			if (messageBoxResult == MessageBoxResult.Yes) {
+				AutenticarSingleton user = AutenticarSingleton.Instance;
 
-        }
+				Window main_window;
+				if (user.Login == "admin") {
+					main_window = new InicioAdministracao();
+				}
+				else {
+					main_window = new InicioFuncionario();
+				}
+				App.Current.MainWindow = main_window;
+				this.Close();
+				App.Current.MainWindow.Show();
+			}
+		}
 
         private void Button_AdicionaIngrediente(object sender, RoutedEventArgs e)
         {
-
+			// ?
         }
 
         private void examList_SelectionChanged(object sender, SelectionChangedEventArgs e)

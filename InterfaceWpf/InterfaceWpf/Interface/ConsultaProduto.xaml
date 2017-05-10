@@ -43,7 +43,7 @@
 						<GridViewColumn.CellTemplate>
 							<DataTemplate>
 								<StackPanel>
-									<Button Content="Remove" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"/>
+									<Button Content="Remove" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Click="Button_Remove"/>
 								</StackPanel>
 							</DataTemplate>
 						</GridViewColumn.CellTemplate>
