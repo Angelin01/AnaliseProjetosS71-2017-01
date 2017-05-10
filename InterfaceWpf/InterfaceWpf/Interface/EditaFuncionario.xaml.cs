@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InterfaceWpf.Class;
+using InterfaceWpf.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,20 @@ namespace InterfaceWpf
         public EditaFuncionario()
         {
             InitializeComponent();
+        }
+        private void Button_Cancela(object sender, RoutedEventArgs e) {
+            AutenticarSingleton user = AutenticarSingleton.Instance;
+
+            Window main_window;
+            if (user.Login == "admin") {
+                main_window = new InicioAdministracao();
+            }
+            else {
+                main_window = new InicioFuncionario();
+            }
+            App.Current.MainWindow = main_window;
+            this.Close();
+            App.Current.MainWindow.Show();
         }
         private void TextBox_Nome(object sender, TextChangedEventArgs e)
         {

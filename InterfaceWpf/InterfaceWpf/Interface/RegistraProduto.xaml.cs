@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InterfaceWpf.Class;
+using InterfaceWpf.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,15 +17,28 @@ using System.Windows.Shapes;
 namespace InterfaceWpf
 {
     /// <summary>
-    /// Interaction logic for AdicionaProduto.xaml
+    /// Interaction logic for RegistraProduto.xaml
     /// </summary>
-    public partial class AdicionaProduto : Window
+    public partial class RegistraProduto : Window
     {
-        public AdicionaProduto()
+        public RegistraProduto()
         {
             InitializeComponent();
         }
+        private void Button_Cancela(object sender, RoutedEventArgs e) {
+            AutenticarSingleton user = AutenticarSingleton.Instance;
 
+            Window main_window;
+            if (user.Login == "admin") {
+                main_window = new InicioAdministracao();
+            }
+            else {
+                main_window = new InicioFuncionario();
+            }
+            App.Current.MainWindow = main_window;
+            this.Close();
+            App.Current.MainWindow.Show();
+        }
         private void Button_AdicionaProd(object sender, RoutedEventArgs e)
         {
 

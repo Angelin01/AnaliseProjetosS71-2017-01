@@ -34,6 +34,7 @@
 
 
         </ListView>
+        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="70,319,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_Cancela" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
 
     </Grid>
 </Window>

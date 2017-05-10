@@ -1,4 +1,4 @@
-﻿<Window x:Class="InterfaceWpf.AdicionaProduto"
+﻿<Window x:Class="InterfaceWpf.RegistraProduto"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -34,6 +34,7 @@
 
 
         </ListView>
+        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="70,321,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_Cancela" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
 
     </Grid>
 </Window>

@@ -67,8 +67,8 @@
     <Compile Include="Interface\AdicionaProdutoPedido.xaml.cs">
       <DependentUpon>AdicionaProdutoPedido.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Interface\AdicionaTransação.xaml.cs">
-      <DependentUpon>AdicionaTransação.xaml</DependentUpon>
+    <Compile Include="Interface\AdicionaTransacao.xaml.cs">
+      <DependentUpon>AdicionaTransacao.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interface\Autenticar.xaml.cs">
       <DependentUpon>Autenticar.xaml</DependentUpon>
@@ -150,14 +150,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Interface\AdicionaProdutoPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Interface\AdicionaTransação.xaml">
+    <Page Include="Interface\AdicionaTransacao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

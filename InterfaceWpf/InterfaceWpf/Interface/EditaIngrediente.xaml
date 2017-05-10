@@ -9,7 +9,7 @@
     <Grid Height="300" Width="500">
         <Label Content="Quantidade" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" Height="33"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="129,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="361"/>
-        <Button Content="Confirma" HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top" Width="480" RenderTransformOrigin="0.5,0.5" Height="25" Click="Button_Confirma" Background="#FFDACDB9">
+        <Button Content="Confirma" HorizontalAlignment="Left" Margin="9,209,0,0" VerticalAlignment="Top" Width="480" RenderTransformOrigin="0.5,0.5" Height="25" Click="Button_Confirma" Background="#FFDACDB9">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -26,6 +26,16 @@
         <TextBox HorizontalAlignment="Left" Height="23" Margin="129,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="361"/>
         <Label Content="Nome Fornecedor" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" Height="33"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="129,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="361"/>
+        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="9,240,0,0" VerticalAlignment="Top" Width="480" RenderTransformOrigin="0.5,0.5" Height="25" Click="Button_Cancela" Background="#FFDACDB9">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.273"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
 
     </Grid>
 </Window>

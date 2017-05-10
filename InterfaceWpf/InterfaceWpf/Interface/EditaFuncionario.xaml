@@ -28,7 +28,7 @@
         <Label Content="Nome do pai" HorizontalAlignment="Left" Margin="278,404,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" VerticalContentAlignment="Center"/>
         <Label Content="Senha" HorizontalAlignment="Left" Margin="564,451,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontFamily="Nirmala UI Semilight"/>
         <Label Content="Nome da mãe" HorizontalAlignment="Left" Margin="564,404,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontFamily="Nirmala UI Semilight"/>
-        <Button Content="Confirma" HorizontalAlignment="Center" Margin="386,595,378,56" Width="310" Height="40" FontFamily="Nirmala UI Semilight" FontSize="22" Click="Button_Click" BorderBrush="{x:Null}" Background="#FFB29E85" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+        <Button Content="Confirma" HorizontalAlignment="Center" Margin="381,584,389,96" Width="310" Height="40" FontFamily="Nirmala UI Semilight" FontSize="22" Click="Button_Click" BorderBrush="{x:Null}" Background="#FFB29E85" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
         <Label Content="Cargo" HorizontalAlignment="Left" Margin="278,503,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" VerticalContentAlignment="Center"/>
         <Label Content="Salario" HorizontalAlignment="Left" Margin="564,503,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" VerticalContentAlignment="Center"/>
         <ComboBox HorizontalAlignment="Left" Margin="278,529,0,0" VerticalAlignment="Top" Width="230" SelectionChanged="ComboBox_SelectionChanged" VerticalContentAlignment="Center">
@@ -49,6 +49,7 @@
         <TextBox x:Name="EmailA_Copy1" HorizontalAlignment="Left" Height="23" Margin="278,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TextChanged="TextBox_ctps" VerticalContentAlignment="Center"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="278,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TextChanged="TextBox_Endereco" VerticalContentAlignment="Center"/>
         <TextBox x:Name="EmailA_Copy2" HorizontalAlignment="Left" Height="23" Margin="278,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TextChanged="TextBox_Nome" VerticalContentAlignment="Center"/>
+        <Button Content="Cancelar" HorizontalAlignment="Center" Margin="381,629,389,51" Width="310" Height="40" FontFamily="Nirmala UI Semilight" FontSize="22" BorderBrush="{x:Null}" Background="#FFB29E85" VerticalContentAlignment="Center" VerticalAlignment="Center" Click="Button_Cancela"/>
 
     </Grid>
 </Window>

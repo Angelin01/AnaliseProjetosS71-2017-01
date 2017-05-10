@@ -58,32 +58,50 @@ namespace InterfaceWpf.Interface
 
         private void RegistrarProduto(object sender, RoutedEventArgs e)
         {
-
+            Window main_window = new RegistraProduto();
+            App.Current.MainWindow = main_window;
+            this.Close();
+            App.Current.MainWindow.Show();
         }
 
         private void ConsultarProdutos(object sender, RoutedEventArgs e)
         {
-
+            Window main_window = new ConsultaProduto();
+            App.Current.MainWindow = main_window;
+            this.Close();
+            App.Current.MainWindow.Show();
         }
 
         private void RegistrarIngrediente(object sender, RoutedEventArgs e)
         {
-
+            Window main_window = new RegistraIngrediente();
+            App.Current.MainWindow = main_window;
+            this.Close();
+            App.Current.MainWindow.Show();
         }
 
         private void ConsultarIngredientes(object sender, RoutedEventArgs e)
         {
-
+            Window main_window = new ConsultaIngrediente();
+            App.Current.MainWindow = main_window;
+            this.Close();
+            App.Current.MainWindow.Show();
         }
 
         private void AdicionarTransacao(object sender, RoutedEventArgs e)
         {
-
+            Window main_window = new AdicionaTransacao();
+            App.Current.MainWindow = main_window;
+            this.Close();
+            App.Current.MainWindow.Show();
         }
 
         private void ConsultaRelatorio(object sender, RoutedEventArgs e)
         {
-
+            Window main_window = new ConsultaRelatorio();
+            App.Current.MainWindow = main_window;
+            this.Close();
+            App.Current.MainWindow.Show();
         }
     }
 }

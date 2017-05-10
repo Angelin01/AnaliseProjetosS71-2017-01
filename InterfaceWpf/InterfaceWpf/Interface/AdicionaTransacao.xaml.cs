@@ -17,14 +17,20 @@ using System.Windows.Shapes;
 namespace InterfaceWpf
 {
     /// <summary>
-    /// Interaction logic for RegistraPedido.xaml
+    /// Interaction logic for Adiciona_Transação.xaml
     /// </summary>
-    public partial class RegistraPedido : Window
+    public partial class AdicionaTransacao : Window
     {
-        public RegistraPedido()
+        public AdicionaTransacao()
         {
             InitializeComponent();
         }
+
+        private void Button_Confirma(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void Button_Cancela(object sender, RoutedEventArgs e) {
             AutenticarSingleton user = AutenticarSingleton.Instance;
 
@@ -38,31 +44,6 @@ namespace InterfaceWpf
             App.Current.MainWindow = main_window;
             this.Close();
             App.Current.MainWindow.Show();
-        }
-        private void Button_AdicionaProd(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_RemoveProd(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_EditaQuant(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Finaliza(object sender, RoutedEventArgs e)
-        {
-
-        }
-        
-
-        private void examList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
