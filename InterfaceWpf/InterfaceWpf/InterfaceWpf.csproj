@@ -54,7 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Class\AutenticarSingleton.cs" />
+    <Compile Include="Class\Controller.cs" />
+    <Compile Include="Class\InterfaceAdministrador.cs" />
+    <Compile Include="Class\InterfaceFuncionario.cs" />
     <Compile Include="Entity\Administrador.cs" />
     <Compile Include="Entity\Funcionario.cs" />
     <Compile Include="Entity\Pedido.cs" />

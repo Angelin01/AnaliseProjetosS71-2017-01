@@ -23,7 +23,7 @@ namespace InterfaceWpf.Class
         public void MostrarJanelaEncerrarPedido()
         { }
 
-        public void MostrarJanelaConfirmacao()
+        public void MostrarJanelaConfirmacao(string aviso)
         { }
     }
 }

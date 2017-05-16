@@ -20,9 +20,6 @@ namespace InterfaceWpf.Interface
     /// </summary>
     public partial class Autenticar : Window
     {
-        String login;
-        String password;
-
         public Autenticar()
         {
             InitializeComponent();
@@ -35,25 +32,24 @@ namespace InterfaceWpf.Interface
             String _login = input_login.Text.ToString();
             String _password = input_password.Password.ToString();
 
-			// Checar se login é válido
-			if ((_login == "") || (_password == "")) {
-				MessageBox.Show("Login ou senha inválidos.", "Falha no login");
-				return;
-			}
-
             Controller user = Controller.Instance;
 
-            user.Login = _login;
-            user.Password = _password;
+            // Tentar logar
+            user.AutenticarUsuario(_login, _password);
 
+            // Ver se logou
+            if (user.Login == null || user.Login == "")
+                return; // Sair se não deu
+
+
+            // Trocar para aplicação
             Window main_window;
-            // Fazer login (trocar tela)
-            if (user.Login == "admin") {
+
+            if (user.Login == "admin")
                 main_window = new InicioAdministracao();
-            }
-            else {
+            else
                 main_window = new InicioFuncionario();
-            }
+            
             App.Current.MainWindow = main_window;
             this.Close();
             App.Current.MainWindow.Show();

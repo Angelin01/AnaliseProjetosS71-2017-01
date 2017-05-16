@@ -23,11 +23,6 @@ namespace InterfaceWpf.Interface
         public InicioFuncionario()
         {
             InitializeComponent();
-
-            // Fazer login (trocar tela)
-            Window login_window = new Autenticar();
-            this.Hide();
-            login_window.Show();
         }
 
         private void RegistrarPedido(object sender, RoutedEventArgs e)

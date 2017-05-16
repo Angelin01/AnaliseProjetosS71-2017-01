@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InterfaceWpf.Class;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -102,6 +103,21 @@ namespace InterfaceWpf.Interface
             App.Current.MainWindow = main_window;
             this.Close();
             App.Current.MainWindow.Show();
+        }
+
+        bool _shown;
+
+        protected override void OnContentRendered(EventArgs e)
+        {
+            base.OnContentRendered(e);
+
+            if (_shown)
+                return;
+
+            _shown = true;
+            Controller user = Controller.Instance;
+            // Your code here.
+            BannerBemVindo.Content = user.Login;
         }
     }
 }
