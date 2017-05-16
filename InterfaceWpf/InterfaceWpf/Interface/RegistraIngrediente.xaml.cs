@@ -26,7 +26,7 @@ namespace InterfaceWpf
             InitializeComponent();
         }
         private void Button_Cancela(object sender, RoutedEventArgs e) {
-            AutenticarSingleton user = AutenticarSingleton.Instance;
+            Controller user = Controller.Instance;
 
             Window main_window;
             if (user.Login == "admin") {
@@ -43,7 +43,7 @@ namespace InterfaceWpf
         {
 			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Confirma os dados inseridos?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
 			if (messageBoxResult == MessageBoxResult.Yes) {
-				AutenticarSingleton user = AutenticarSingleton.Instance;
+				Controller user = Controller.Instance;
 
 				Window main_window;
 				if (user.Login == "admin") {

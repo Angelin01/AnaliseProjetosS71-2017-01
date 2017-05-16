@@ -56,7 +56,7 @@ namespace InterfaceWpf.Interface
                 return;
 
             _shown = true;
-            AutenticarSingleton user = AutenticarSingleton.Instance;
+            Controller user = Controller.Instance;
             // Your code here.
             BannerBemVindo.Content = user.Login;
         }

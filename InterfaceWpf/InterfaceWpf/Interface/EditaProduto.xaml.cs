@@ -31,7 +31,7 @@ namespace InterfaceWpf
 		}
 
         private void Button_Cancela(object sender, RoutedEventArgs e) {
-            AutenticarSingleton user = AutenticarSingleton.Instance;
+            Controller user = Controller.Instance;
 
             Window main_window;
             if (user.Login == "admin") {

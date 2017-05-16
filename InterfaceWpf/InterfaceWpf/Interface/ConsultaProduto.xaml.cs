@@ -30,7 +30,7 @@ namespace InterfaceWpf.Interface
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-            AutenticarSingleton user = AutenticarSingleton.Instance;
+            Controller user = Controller.Instance;
 
             Window main_window;
             if (user.Login == "admin") {

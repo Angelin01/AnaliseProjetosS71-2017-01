@@ -41,7 +41,7 @@ namespace InterfaceWpf.Interface
 				return;
 			}
 
-            AutenticarSingleton user = AutenticarSingleton.Instance;
+            Controller user = Controller.Instance;
 
             user.Login = _login;
             user.Password = _password;
