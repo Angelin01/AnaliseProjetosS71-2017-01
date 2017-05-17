@@ -29,6 +29,17 @@ namespace InterfaceWpf.Interface
         {
 
         }
+        private void Button_Remove(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente remover o Funcionário?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.No) return;
+        }
+        private void Button_Edit(object sender, RoutedEventArgs e)
+        {
+            App.Current.MainWindow = new EditaFuncionario();
+            this.Close();
+            App.Current.MainWindow.Show();
+        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e) {
             Controller user = Controller.Instance;
