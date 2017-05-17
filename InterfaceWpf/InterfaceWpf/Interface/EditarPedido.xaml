@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfaceWpf"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="RegistraPedido" Height="720" Width="1080" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="ThreeDBorderWindow">
     <Grid Width="1080" Height="720">
@@ -24,20 +25,50 @@
         <Label Content="Preço total" HorizontalAlignment="Left" Margin="374,211,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" FontSize="30" Background="#FFE4E4E4" Height="47" Width="151" BorderBrush="Black"/>
         <TextBox HorizontalAlignment="Left" Height="47" Margin="550,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247" FontFamily="Nirmala UI Semilight" FontSize="36"/>
         <Button Content="Adiciona Produto" HorizontalAlignment="Left" Margin="70,339,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_AdicionaProd" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
-        <Button Content="Finaliza Pedido" HorizontalAlignment="Left" Margin="70,498,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_Finaliza" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
+        <Button Content="Salvar Pedido" HorizontalAlignment="Left" Margin="70,498,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_Finaliza" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
         <ListView x:Name="examList" SelectionMode="Single" Margin="322,267,56,89" SelectionChanged="examList_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Produto" Width="250"/>
-                    <GridViewColumn Header="Quantidade" Width="100"/>
-                    <GridViewColumn Header="Preço" Width="120" />
+                    <GridViewColumn Header="Produto" DisplayMemberBinding="{Binding [0]}" Width="250"/>
+                    <GridViewColumn Header="Quantidade" DisplayMemberBinding="{Binding [1]}"  Width="100"/>
+                    <GridViewColumn Header="Preço" DisplayMemberBinding="{Binding [2]}" Width="120" />
+                    <GridViewColumn Header="Editar" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Editar" Click="Button_EditaQuant" CommandParameter="{Binding [3]}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Remover" Width="65">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Remover" Click="Button_RemoveProd" CommandParameter="{Binding [4]}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
-            <ListViewItem Content="" Margin="0"/>
-
+            <ListViewItem>
+                <x:Array Type="{x:Type sys:String}">
+                    <sys:String>Mocha</sys:String>
+                    <sys:String>1</sys:String>
+                    <sys:String>R$ 12.00</sys:String>
+                    <sys:String>1</sys:String>
+                    <sys:String>1</sys:String>
+                </x:Array>
+            </ListViewItem>
+            <ListViewItem>
+                <x:Array Type="{x:Type sys:String}">
+                    <sys:String>Espresso pequeno</sys:String>
+                    <sys:String>2</sys:String>
+                    <sys:String>R$ 7.50</sys:String>
+                    <sys:String>2</sys:String>
+                    <sys:String>2</sys:String>
+                </x:Array>
+            </ListViewItem>
 
         </ListView>
-        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="70,418,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_Cancela" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
+        <Button Content="Cancelar Edição" HorizontalAlignment="Left" Margin="70,418,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_Cancela" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
 
     </Grid>
 </Window>

@@ -8,12 +8,12 @@
         Title="AdicionaProdutoPedido" Height="300" Width="300" ResizeMode="NoResize">
     <Grid Height="300" Width="300">
         <Label Content="Produto" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" Height="33" FontSize="14"/>
-        <ComboBox HorizontalAlignment="Left" Margin="96,76,0,0" VerticalAlignment="Top" Width="186" SelectionChanged="ComboBox_SelectionChanged">
+        <ComboBox x:Name="comboProduto" HorizontalAlignment="Left" Margin="96,76,0,0" VerticalAlignment="Top" Width="186" SelectionChanged="ComboBox_SelectionChanged">
             <ComboBoxItem Content="Espresso pequeno" HorizontalAlignment="Left" Width="184" Selected="ComboBoxItem_Espresso" FontFamily="Nirmala UI Semilight"/>
             <ComboBoxItem Content="Macchiatto médio" HorizontalAlignment="Left" Width="184" FontFamily="Nirmala UI Semilight" Selected="ComboBoxItem_Macchiatto"/>
         </ComboBox>
         <Label Content="Quantidade" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" Height="33" FontSize="14"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="96,113,0,0" TextWrapping="Wrap" Text="Qtde" VerticalAlignment="Top" Width="73"/>
+        <TextBox x:Name="txtNovaQnt" HorizontalAlignment="Left" Height="23" Margin="96,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
         <Button Content="Confirma" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top" Width="272" RenderTransformOrigin="0.5,0.5" Height="25" Click="Button_Confirma" Background="#FFDACDB9"/>
         <Label Content="Adicionando Produto no pedido" Margin="0,10,0,233" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDACDB9"/>
         <Button Content="Cancelar" HorizontalAlignment="Left" Margin="10,203,0,0" VerticalAlignment="Top" Width="272" RenderTransformOrigin="0.5,0.5" Height="25" Click="Button_Cancela" Background="#FFDACDB9"/>

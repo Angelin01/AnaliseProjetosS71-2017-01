@@ -41,27 +41,27 @@ namespace InterfaceWpf
         }
         private void Button_AdicionaProd(object sender, RoutedEventArgs e)
         {
-			Window main_window = new AdicionaProdutoPedido();
-			App.Current.MainWindow = main_window;
-			//this.Close();
-			App.Current.MainWindow.Show();
-		}
+            // Abrir um popup
+            Window main_window = new AdicionaProdutoPedido();
+            main_window.Show();
+        }
 
         private void Button_RemoveProd(object sender, RoutedEventArgs e)
         {
-			Window main_window = new RemoveProdutoPedido();
-			App.Current.MainWindow = main_window;
-			this.Close();
-			App.Current.MainWindow.Show();
-		}
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja remover o produto do pedido?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+            
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                // Remover produto da lista
+            }
+        }
 
         private void Button_EditaQuant(object sender, RoutedEventArgs e)
         {
-			Window main_window = new EditaQuantidadePedido();
-			App.Current.MainWindow = main_window;
-			this.Close();
-			App.Current.MainWindow.Show();
-		}
+            // Abrir um popup
+            Window main_window = new EditaQuantidadePedido();
+            main_window.Show();
+        }
 
         private void Button_Finaliza(object sender, RoutedEventArgs e)
         {

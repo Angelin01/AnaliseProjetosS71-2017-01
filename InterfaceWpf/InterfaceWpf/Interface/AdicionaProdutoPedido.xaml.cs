@@ -28,17 +28,27 @@ namespace InterfaceWpf
 
         private void Button_Confirma(object sender, RoutedEventArgs e)
         {
-			//Window main_window = new RegistraPedido();
-			//App.Current.MainWindow = main_window;
-			this.Close();
-			//App.Current.MainWindow.Show();
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja confirmar o produto?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                if (String.IsNullOrEmpty(txtNovaQnt.Text) || String.IsNullOrEmpty(comboProduto.Text))
+                {
+                    MessageBox.Show("Há campo(s) vazio(s)", "Erro");
+                    return;
+                }
+
+                MessageBox.Show("Produto adicionado.", "Sucesso!");
+
+                this.Close();
+            }
+
+            this.Close();
 		}
 
-        private void Button_Cancela(object sender, RoutedEventArgs e) {
-			//Window main_window = new RegistraPedido();
-            //App.Current.MainWindow = main_window;
+        private void Button_Cancela(object sender, RoutedEventArgs e)
+        {
             this.Close();
-            //App.Current.MainWindow.Show();
         }
 
         private void ComboBoxItem_Espresso(object sender, RoutedEventArgs e)

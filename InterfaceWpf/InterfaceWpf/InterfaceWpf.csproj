@@ -133,9 +133,6 @@
     <Compile Include="Interface\EditaFuncionario.xaml.cs">
       <DependentUpon>EditaFuncionario.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Interface\RemoveProdutoPedido.xaml.cs">
-      <DependentUpon>RemoveProdutoPedido.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -247,10 +244,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Interface\EditaFuncionario.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interface\RemoveProdutoPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
