@@ -60,18 +60,7 @@ namespace InterfaceWpf
 
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-                Controller user = Controller.Instance;
-
-                Window main_window;
-                if (user.Login == "admin")
-                {
-                    main_window = new InicioAdministracao();
-                }
-                else
-                {
-                    main_window = new InicioFuncionario();
-                }
-                App.Current.MainWindow = main_window;
+                App.Current.MainWindow = new ConsultaPedido();
                 this.Close();
                 App.Current.MainWindow.Show();
             }
