@@ -124,11 +124,51 @@ namespace InterfaceWpf
 
         }
 
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
+
+        private bool ValidateForm()
+        {
+            foreach (TextBox tb in FindVisualChildren<TextBox>(grid))
+            {
+                if (String.IsNullOrEmpty(tb.Text))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Confirma os dados inseridos?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+            Controller user = Controller.Instance;
+
+            if (!ValidateForm())
+            {
+                MessageBox.Show("Todos os campos devem estar preenchidos.", "Erro");
+                return;
+            }
+
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Confirma os dados inseridos?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
 			if (messageBoxResult == MessageBoxResult.Yes) {
-				Controller user = Controller.Instance;
+				
 
 				Window main_window;
 				if (user.Login == "admin") {

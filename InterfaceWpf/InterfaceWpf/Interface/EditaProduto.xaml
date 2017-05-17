@@ -32,6 +32,24 @@
                 <GridView>
                     <GridViewColumn Header="Ingrediente" Width="250" DisplayMemberBinding="{Binding Ingrediente}"/>
                     <GridViewColumn Header="Quantidade" Width="250" DisplayMemberBinding="{Binding Quantidade}"/>
+                    <GridViewColumn Header="" Width="150" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Button Content="Editar" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Click="Button_EditaIngr"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="" Width="150" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Button Content="Remover" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Click="Button_RemoveIngre"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

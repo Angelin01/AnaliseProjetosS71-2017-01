@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:InterfaceWpf"
         mc:Ignorable="d"
         Title="RegistraFuncionario" Height="720" Width="1080" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="ThreeDBorderWindow">
-    <Grid Width="1080" Height="720">
+    <Grid x:Name="grid" Width="1080" Height="720">
         <Label Content="REGISTRO DE FUNCIONÁRIO" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" Height="43" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0,21,0,0" Background="#FFB29E85" VerticalContentAlignment="Center" Width="6000">
             <Label.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
