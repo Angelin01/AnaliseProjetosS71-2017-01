@@ -90,6 +90,9 @@
     <Compile Include="Interface\ConsultaRelatorio.xaml.cs">
       <DependentUpon>ConsultaRelatorio.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interface\RegistraFuncionario.xaml.cs">
+      <DependentUpon>RegistraFuncionario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interface\EditaIngrediente.xaml.cs">
       <DependentUpon>EditaIngrediente.xaml</DependentUpon>
     </Compile>
@@ -186,6 +189,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Interface\ConsultaRelatorio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interface\RegistraFuncionario.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
