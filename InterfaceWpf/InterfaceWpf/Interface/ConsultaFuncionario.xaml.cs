@@ -60,5 +60,10 @@ namespace InterfaceWpf.Interface
         {
 
         }
+
+        private void Button_Filtro(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Resultados filtrados.", "Sucesso!");
+        }
     }
 }

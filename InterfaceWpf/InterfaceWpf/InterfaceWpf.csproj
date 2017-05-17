@@ -96,6 +96,9 @@
     <Compile Include="Interface\DadosRelatorio.xaml.cs">
       <DependentUpon>DadosRelatorio.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interface\EditaQuantidadeIngrediente.xaml.cs">
+      <DependentUpon>EditaQuantidadeIngrediente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interface\RegistraFuncionario.xaml.cs">
       <DependentUpon>RegistraFuncionario.xaml</DependentUpon>
     </Compile>
@@ -203,6 +206,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Interface\DadosRelatorio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interface\EditaQuantidadeIngrediente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

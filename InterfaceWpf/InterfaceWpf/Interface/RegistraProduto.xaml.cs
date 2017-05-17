@@ -69,5 +69,22 @@ namespace InterfaceWpf
         {
 
         }
+
+        private void Button_RemoveIngre(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja remover o ingrediente do produto?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                // Remover produto da lista
+                MessageBox.Show("Ingrediente removido.", "Sucesso!");
+            }
+        }
+
+        private void Button_EditaIngr(object sender, RoutedEventArgs e)
+        {
+            App.Current.MainWindow = new EditaQuantidadeIngrediente();
+            App.Current.MainWindow.Show();
+        }
     }
 }

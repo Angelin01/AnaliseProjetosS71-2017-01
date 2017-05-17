@@ -53,6 +53,7 @@ namespace InterfaceWpf
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 // Remover produto da lista
+                MessageBox.Show("Produto removido.", "Sucesso!");
             }
         }
 

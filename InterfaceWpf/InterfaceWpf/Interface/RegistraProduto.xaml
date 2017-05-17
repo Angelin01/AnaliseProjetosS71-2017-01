@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfaceWpf"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="RegistraProduto" Height="720" Width="1080" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="ThreeDBorderWindow">
     <Grid Width="1080" Height="720">
@@ -26,13 +27,32 @@
         <ListView x:Name="examList" SelectionMode="Single" Margin="322,173,56,183" SelectionChanged="examList_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Ingrediente" Width="250"/>
-                    <GridViewColumn Header="Quantidade" Width="250"/>
+                    <GridViewColumn Header="Ingrediente" DisplayMemberBinding="{Binding [0]}" Width="250"/>
+                    <GridViewColumn Header="Quantidade" DisplayMemberBinding="{Binding [1]}" Width="250"/>
+                    <GridViewColumn Header="Editar" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Editar" Click="Button_EditaIngr" CommandParameter="{Binding [2]}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Remover" Width="65">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Remover" Click="Button_RemoveIngre" CommandParameter="{Binding [3]}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
-            <ListViewItem Content="" Margin="0"/>
-
-
+            <ListViewItem>
+                <x:Array Type="{x:Type sys:String}">
+                    <sys:String>Café</sys:String>
+                    <sys:String>1000</sys:String>
+                    <sys:String>1</sys:String>
+                    <sys:String>1</sys:String>
+                </x:Array>
+            </ListViewItem>
         </ListView>
         <Button Content="Cancelar" HorizontalAlignment="Left" Margin="70,321,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_Cancela" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
 

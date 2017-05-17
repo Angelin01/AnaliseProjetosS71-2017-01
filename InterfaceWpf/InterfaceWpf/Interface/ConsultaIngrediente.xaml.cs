@@ -57,9 +57,14 @@ namespace InterfaceWpf.Interface
 			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente remover o produto?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
 			if (messageBoxResult == MessageBoxResult.No) return;
 		}
-	}
 
-	public class Ingrediente
+        private void Button_Filtro(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Resultados filtrados.", "Sucesso!");
+        }
+    }
+
+    public class Ingrediente
 	{
 		public string Nome { get; set; }
 		public int Quantidade { get; set; }
