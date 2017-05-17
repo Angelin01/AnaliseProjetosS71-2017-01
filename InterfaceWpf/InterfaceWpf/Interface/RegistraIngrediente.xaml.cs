@@ -39,22 +39,54 @@ namespace InterfaceWpf
             this.Close();
             App.Current.MainWindow.Show();
         }
-        private void Button_Confirma(object sender, RoutedEventArgs e)
-        {
-			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Confirma os dados inseridos?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
-			if (messageBoxResult == MessageBoxResult.Yes) {
-				Controller user = Controller.Instance;
 
-				Window main_window;
-				if (user.Login == "admin") {
-					main_window = new InicioAdministracao();
+		public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+		{
+			if (depObj != null) {
+				for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++) {
+					DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+					if (child != null && child is T) {
+						yield return (T)child;
+					}
+
+					foreach (T childOfChild in FindVisualChildren<T>(child)) {
+						yield return childOfChild;
+					}
 				}
-				else {
-					main_window = new InicioFuncionario();
+			}
+		}
+
+		private bool ValidateForm()
+		{
+			foreach (TextBox tb in FindVisualChildren<TextBox>(grid)) {
+				if (String.IsNullOrEmpty(tb.Text)) {
+					return false;
 				}
-				App.Current.MainWindow = main_window;
-				this.Close();
-				App.Current.MainWindow.Show();
+			}
+			return true;
+		}
+
+		private void Button_Confirma(object sender, RoutedEventArgs e)
+        {
+			if(ValidateForm()) {
+				MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Confirma os dados inseridos?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+				if (messageBoxResult == MessageBoxResult.Yes) {
+					Controller user = Controller.Instance;
+
+					Window main_window;
+					if (user.Login == "admin") {
+						main_window = new InicioAdministracao();
+					}
+					else {
+						main_window = new InicioFuncionario();
+					}
+					App.Current.MainWindow = main_window;
+					this.Close();
+					App.Current.MainWindow.Show();
+				}
+			}
+			else {
+				MessageBox.Show("Todos os campos devem estar preenchidos.", "Erro");
 			}
 		}
     }
