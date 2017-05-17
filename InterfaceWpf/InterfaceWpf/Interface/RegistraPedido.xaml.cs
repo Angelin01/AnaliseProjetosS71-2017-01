@@ -43,7 +43,7 @@ namespace InterfaceWpf
         {
 			Window main_window = new AdicionaProdutoPedido();
 			App.Current.MainWindow = main_window;
-			this.Close();
+			//this.Close();
 			App.Current.MainWindow.Show();
 		}
 

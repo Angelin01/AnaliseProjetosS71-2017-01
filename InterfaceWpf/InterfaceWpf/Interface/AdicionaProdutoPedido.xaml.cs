@@ -28,17 +28,17 @@ namespace InterfaceWpf
 
         private void Button_Confirma(object sender, RoutedEventArgs e)
         {
-			Window main_window = new RegistraPedido();
-			App.Current.MainWindow = main_window;
+			//Window main_window = new RegistraPedido();
+			//App.Current.MainWindow = main_window;
 			this.Close();
-			App.Current.MainWindow.Show();
+			//App.Current.MainWindow.Show();
 		}
 
         private void Button_Cancela(object sender, RoutedEventArgs e) {
-			Window main_window = new RegistraPedido();
-            App.Current.MainWindow = main_window;
+			//Window main_window = new RegistraPedido();
+            //App.Current.MainWindow = main_window;
             this.Close();
-            App.Current.MainWindow.Show();
+            //App.Current.MainWindow.Show();
         }
 
         private void ComboBoxItem_Espresso(object sender, RoutedEventArgs e)
