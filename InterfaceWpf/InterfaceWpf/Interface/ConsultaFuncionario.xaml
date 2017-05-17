@@ -25,7 +25,7 @@
                 </LinearGradientBrush>
             </Label.OpacityMask>
         </Label>
-        <ListView Margin="-22,35,-14,62" Name="lvUsers" Grid.Row="1" HorizontalAlignment="Center" SelectionChanged="lvUsers_SelectionChanged">
+        <ListView Margin="-22,35,-14,62" Name="lvUsers" Grid.Row="1" HorizontalAlignment="Center">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="" Width="48" >

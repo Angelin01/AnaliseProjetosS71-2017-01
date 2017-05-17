@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfaceWpf.Interface"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="ConsultaRelatorioOrcamentario" Height="720" Width="1080" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="ThreeDBorderWindow" >
     <Grid Height="720" Width="1080" >
@@ -30,10 +31,46 @@
                     <GridView.ColumnHeaderContextMenu>
                         <ContextMenu Background="Black"/>
                     </GridView.ColumnHeaderContextMenu>
-                    <GridViewColumn Header="Valor da transação" Width="300" DisplayMemberBinding="{Binding Preco}" />
-                    <GridViewColumn Header="Data da transação" Width="300" DisplayMemberBinding="{Binding Data}" />
+                    <GridViewColumn Header="Valor da transação" Width="300" DisplayMemberBinding="{Binding [0]}" />
+                    <GridViewColumn Header="Data da transação" Width="300" DisplayMemberBinding="{Binding [1]}" />
                 </GridView>
             </ListView.View>
+            <ListViewItem>
+                <x:Array Type="{x:Type sys:String}">
+                    <sys:String>R$980,00</sys:String>
+                    <sys:String>04/04/2017</sys:String>
+                </x:Array>
+            </ListViewItem>
+            <ListViewItem>
+                <x:Array Type="{x:Type sys:String}">
+                    <sys:String>R$210,00</sys:String>
+                    <sys:String>18/03/2017</sys:String>
+                </x:Array>
+            </ListViewItem>
+            <ListViewItem>
+                <x:Array Type="{x:Type sys:String}">
+                    <sys:String>R$450,00</sys:String>
+                    <sys:String>17/03/2017</sys:String>
+                </x:Array>
+            </ListViewItem>
+            <ListViewItem>
+                <x:Array Type="{x:Type sys:String}">
+                    <sys:String>R$459,00</sys:String>
+                    <sys:String>11/03/2017</sys:String>
+                </x:Array>
+            </ListViewItem>
+            <ListViewItem>
+                <x:Array Type="{x:Type sys:String}">
+                    <sys:String>R$256,00</sys:String>
+                    <sys:String>10/03/2017</sys:String>
+                </x:Array>
+            </ListViewItem>
+            <ListViewItem>
+                <x:Array Type="{x:Type sys:String}">
+                    <sys:String>R$560,00</sys:String>
+                    <sys:String>01/03/2017</sys:String>
+                </x:Array>
+            </ListViewItem>
         </ListView>
         <Button Content="Voltar" HorizontalAlignment="Left" Margin="240,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
