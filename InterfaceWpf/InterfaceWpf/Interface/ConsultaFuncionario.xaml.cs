@@ -55,5 +55,10 @@ namespace InterfaceWpf.Interface
             this.Close();
             App.Current.MainWindow.Show();
         }
+
+        private void lvUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

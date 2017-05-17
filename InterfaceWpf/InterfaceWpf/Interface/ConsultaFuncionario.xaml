@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:InterfaceWpf.Interface"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="ConsultaFuncionario" Height="720" Width="1080" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="ThreeDBorderWindow" >
+        Title="ConsultaFuncionario" Height="720" Width="1366" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="ThreeDBorderWindow" >
     <Grid Height="720" Width="1080" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -25,7 +25,7 @@
                 </LinearGradientBrush>
             </Label.OpacityMask>
         </Label>
-        <ListView Margin="10,47,10,50" Name="lvUsers" Grid.Row="1">
+        <ListView Margin="-22,35,-14,62" Name="lvUsers" Grid.Row="1" HorizontalAlignment="Center" SelectionChanged="lvUsers_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="" Width="48" >

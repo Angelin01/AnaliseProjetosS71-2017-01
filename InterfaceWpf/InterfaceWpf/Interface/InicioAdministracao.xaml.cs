@@ -99,9 +99,9 @@ namespace InterfaceWpf.Interface
 
         private void ConsultaRelatorio(object sender, RoutedEventArgs e)
         {
-            Window main_window = new ConsultaRelatorio();
+            Window main_window = new DadosRelatorio();
             App.Current.MainWindow = main_window;
-            this.Close();
+            //this.Close();
             App.Current.MainWindow.Show();
         }
 

@@ -24,7 +24,7 @@
                 </LinearGradientBrush>
             </Label.OpacityMask>
         </Label>
-        <ListView Margin="240,10,240,72" Name="lvUsers" Grid.Row="1" Width="600" FontFamily="Nirmala UI Semilight">
+        <ListView Margin="240,40,240,72" Name="lvUsers" Grid.Row="1" Width="600" FontFamily="Nirmala UI Semilight">
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContextMenu>
@@ -35,7 +35,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Voltar" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Voltar" HorizontalAlignment="Left" Margin="240,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
     </Grid>
 </Window>
