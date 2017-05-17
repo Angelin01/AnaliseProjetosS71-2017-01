@@ -59,5 +59,30 @@ namespace InterfaceWpf.Interface
 			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja encerrar o pedido?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
 			if (messageBoxResult == MessageBoxResult.No) return;
 		}
-	}
+
+        private void Button_Filtro(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Resultados filtrados.", "Sucesso!");
+        }
+
+        private void ComboBoxItem_Encerrado(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ComboBoxItem_Andamento(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ComboBoxItem_Cancelado(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+    }
 }

@@ -43,8 +43,8 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-									<Button Content="Cancela" Width ="125" Command="{Binding [3]}" Click="Button_Cancel"/>
-								</StackPanel>
+                                    <Button Content="Remover" Width ="125" Command="{Binding [3]}" Click="Button_Cancel"/>
+                                </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -65,7 +65,6 @@
                     <sys:String>Thiago Bispo</sys:String>
                     <sys:String>Em andamento</sys:String>
                     <sys:String>1</sys:String>
-                    <sys:String>1</sys:String>
                 </x:Array>
             </ListViewItem>
             <ListViewItem>
@@ -73,7 +72,6 @@
                     <sys:String>1</sys:String>
                     <sys:String>Thiago Bispo</sys:String>
                     <sys:String>Encerrado</sys:String>
-                    <sys:String>1</sys:String>
                     <sys:String>1</sys:String>
                 </x:Array>
             </ListViewItem>
@@ -83,11 +81,20 @@
                     <sys:String>Gustavo Akira</sys:String>
                     <sys:String>Cancelado</sys:String>
                     <sys:String>1</sys:String>
-                    <sys:String>1</sys:String>
                 </x:Array>
             </ListViewItem>
         </ListView>
-        <Button Content="Voltar" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top">
+            <Button Content="Voltar" Width="100" Click="Button_Click"/>
+            <Label Content="Atendente:" Margin="10,0,0,0" />
+            <TextBox x:Name="txtFiltroAtendente" Width="100" />
+            <Label Content="Estado:" Margin="10,0,0,0" />
+            <ComboBox x:Name="comboProduto" Width="150" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem Content="Em andamento" HorizontalAlignment="Left" Selected="ComboBoxItem_Andamento" FontFamily="Nirmala UI Semilight"/>
+                <ComboBoxItem Content="Encerrado" HorizontalAlignment="Left" Selected="ComboBoxItem_Encerrado" FontFamily="Nirmala UI Semilight"/>
+                <ComboBoxItem Content="Cancelado" HorizontalAlignment="Left" Selected="ComboBoxItem_Cancelado" FontFamily="Nirmala UI Semilight"/>
+            </ComboBox>
+            <Button Content="Filtrar" Margin="10,0,0,0" Width="100" Click="Button_Filtro"/>
+        </StackPanel>
     </Grid>
 </Window>

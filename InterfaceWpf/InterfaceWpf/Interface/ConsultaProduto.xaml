@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfaceWpf.Interface"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="ConsultaProdutos" Height="720" Width="1080" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="ThreeDBorderWindow" >
     <Grid Height="720" Width="1080" >
@@ -25,33 +26,55 @@
             </Label.OpacityMask>
         </Label>
         <ListView Margin="10,47,10,50" Name="lvUsers" Grid.Row="1">
-			<ListView.View>
-				<GridView>
-					<GridViewColumn Header="" Width="150" >
-						<GridViewColumn.CellTemplate>
-							<DataTemplate>
-								<StackPanel>
-									<Button Content="Edita" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Click="Button_Edit"/>
-								</StackPanel>
-							</DataTemplate>
-						</GridViewColumn.CellTemplate>
-					</GridViewColumn>
-					<GridViewColumn Header="Nome" Width="300" DisplayMemberBinding="{Binding Nome}" />
-					<GridViewColumn Header="Preço" Width="150" DisplayMemberBinding="{Binding PReco}" />
-					<GridViewColumn Header="Ingredientes" Width="150" DisplayMemberBinding="{Binding Ingredientes}" />
-					<GridViewColumn Header="" Width="150" >
-						<GridViewColumn.CellTemplate>
-							<DataTemplate>
-								<StackPanel>
-									<Button Content="Remove" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Click="Button_Remove"/>
-								</StackPanel>
-							</DataTemplate>
-						</GridViewColumn.CellTemplate>
-					</GridViewColumn>
-				</GridView>
-			</ListView.View>
-		</ListView>
-        <Button Content="Voltar" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="76" Click="Button_Click"/>
-
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="" Width="150" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Button Content="Edita" Width ="125" Command="{Binding [0]}" Click="Button_Edit"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Nome" Width="300" DisplayMemberBinding="{Binding [1]}" />
+                    <GridViewColumn Header="Preço" Width="150" DisplayMemberBinding="{Binding [2]}" />
+                    <GridViewColumn Header="Ingredientes" Width="150" DisplayMemberBinding="{Binding [3]}" />
+                    <GridViewColumn Header="" Width="150" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Button Content="Remover" Width ="125" Command="{Binding [4]}" Click="Button_Remove"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListViewItem>
+                <x:Array Type="{x:Type sys:String}">
+                    <sys:String>1</sys:String>
+                    <sys:String>Mocha</sys:String>
+                    <sys:String>R$12,00</sys:String>
+                    <sys:String>Café, Leite, Chocolate, Chantilly</sys:String>
+                    <sys:String>1</sys:String>
+                </x:Array>
+            </ListViewItem>
+            <ListViewItem>
+                <x:Array Type="{x:Type sys:String}">
+                    <sys:String>1</sys:String>
+                    <sys:String>Espresso</sys:String>
+                    <sys:String>R$8,50</sys:String>
+                    <sys:String>Café, Leite, Chocolate</sys:String>
+                    <sys:String>1</sys:String>
+                </x:Array>
+            </ListViewItem>
+        </ListView>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top">
+            <Button Content="Voltar" Width="100" Click="Button_Click"/>
+            <Label Content="Nome:" Margin="10,0,0,0" />
+            <TextBox x:Name="txtFiltroNome" Width="100" />
+            <Button Content="Filtrar" Margin="10,0,0,0" Width="100" Click="Button_Filtro"/>
+        </StackPanel>
     </Grid>
 </Window>

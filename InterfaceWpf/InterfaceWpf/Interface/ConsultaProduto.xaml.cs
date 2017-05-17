@@ -23,10 +23,6 @@ namespace InterfaceWpf.Interface
         public ConsultaProduto()
         {
             InitializeComponent();
-
-			List<Produto> items = new List<Produto>();
-			items.Add(new Produto() { Nome = "Produto Teste", PReco = 42, Ingredientes = "Ingredientes de teste" });
-			lvUsers.ItemsSource = items;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
@@ -56,6 +52,11 @@ namespace InterfaceWpf.Interface
 			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente remover o produto?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
 			if (messageBoxResult == MessageBoxResult.No) return;
 		}
+
+        private void Button_Filtro(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Resultados filtrados.", "Sucesso!");
+        }
     }
 
 	// Temporário

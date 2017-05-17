@@ -14,13 +14,5 @@ namespace InterfaceWpf
     /// </summary>
 
     public partial class App : Application
-    {
-        private Funcionario current_user;
-
-        public void SetFuncionario(string login, string password)
-        {
-            current_user.Login = login;
-            current_user.Senha = password;
-        }
-    }
+    { }
 }
