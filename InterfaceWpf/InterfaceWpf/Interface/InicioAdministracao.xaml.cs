@@ -93,7 +93,7 @@ namespace InterfaceWpf.Interface
         {
             Window main_window = new AdicionaTransacao();
             App.Current.MainWindow = main_window;
-            this.Close();
+            //this.Close();
             App.Current.MainWindow.Show();
         }
 
