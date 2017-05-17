@@ -32,7 +32,7 @@ namespace InterfaceWpf
 				MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Confirma os dados inseridos?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
 				if (messageBoxResult == MessageBoxResult.Yes) {
 					Controller user = Controller.Instance;
-
+                    /*
 					Window main_window;
 					if (user.Login == "admin") {
 						main_window = new InicioAdministracao();
@@ -41,8 +41,9 @@ namespace InterfaceWpf
 						main_window = new InicioFuncionario();
 					}
 					App.Current.MainWindow = main_window;
-					this.Close();
-					App.Current.MainWindow.Show();
+					*/
+                    this.Close();
+					//App.Current.MainWindow.Show();
 				}
 			}
 			else {
@@ -52,7 +53,7 @@ namespace InterfaceWpf
 
         private void Button_Cancela(object sender, RoutedEventArgs e) {
             Controller user = Controller.Instance;
-
+            /*
             Window main_window;
             if (user.Login == "admin") {
                 main_window = new InicioAdministracao();
@@ -61,8 +62,9 @@ namespace InterfaceWpf
                 main_window = new InicioFuncionario();
             }
             App.Current.MainWindow = main_window;
+            */
             this.Close();
-            App.Current.MainWindow.Show();
+            //App.Current.MainWindow.Show();
         }
     }
 }
