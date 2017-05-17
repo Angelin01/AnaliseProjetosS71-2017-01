@@ -41,21 +41,52 @@ namespace InterfaceWpf
         }
         private void Button_AdicionaProd(object sender, RoutedEventArgs e)
         {
+            Window main_window = new AdicionaProdutoPedido();
+            App.Current.MainWindow = main_window;
+            //this.Close();
+            App.Current.MainWindow.Show();
 
         }
 
         private void Button_RemoveProd(object sender, RoutedEventArgs e)
         {
+            Window main_window = new RemoveProdutoPedido();
+            App.Current.MainWindow = main_window;
+            this.Close();
+            App.Current.MainWindow.Show();
 
         }
 
         private void Button_EditaQuant(object sender, RoutedEventArgs e)
         {
 
+            Window main_window = new EditaQuantidadePedido();
+            App.Current.MainWindow = main_window;
+            this.Close();
+            App.Current.MainWindow.Show();
         }
 
         private void Button_Finaliza(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja confirmar as alterações do pedido?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                Controller user = Controller.Instance;
+
+                Window main_window;
+                if (user.Login == "admin")
+                {
+                    main_window = new InicioAdministracao();
+                }
+                else
+                {
+                    main_window = new InicioFuncionario();
+                }
+                App.Current.MainWindow = main_window;
+                this.Close();
+                App.Current.MainWindow.Show();
+            }
 
         }
 
