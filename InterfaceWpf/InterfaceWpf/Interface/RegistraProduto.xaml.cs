@@ -61,7 +61,8 @@ namespace InterfaceWpf
 
         private void Button_AdicionaIngrediente(object sender, RoutedEventArgs e)
         {
-			// ?
+            App.Current.MainWindow = new AdicionaIngrediente();
+            App.Current.MainWindow.Show();
         }
 
         private void examList_SelectionChanged(object sender, SelectionChangedEventArgs e)

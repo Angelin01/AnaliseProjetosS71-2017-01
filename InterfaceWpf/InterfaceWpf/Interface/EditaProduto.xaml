@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="EditaProduto" Height="720" Width="1080" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="ThreeDBorderWindow">
     <Grid Width="1080" Height="720">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="311*"/>
+            <RowDefinition Height="409*"/>
+        </Grid.RowDefinitions>
         <Label Content="EDIÇÃO DE PRODUTO" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" Background="#FFB29E85" Height="67" Width="804" HorizontalContentAlignment="Center" FontSize="36" FontWeight="Bold" Margin="138,29,138,0" VerticalContentAlignment="Center">
             <Label.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -22,16 +26,16 @@
             </Label.OpacityMask>
         </Label>
         <Button Content="Adiciona ingrediente" HorizontalAlignment="Left" Margin="70,237,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_AdicionaIngrediente" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
-        <Button Content="Confirma" HorizontalAlignment="Left" Margin="70,404,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_Finaliza" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
-        <ListView x:Name="examList" SelectionMode="Single" Margin="322,173,56,183" SelectionChanged="examList_SelectionChanged">
-			<ListView.View>
-				<GridView>
-					<GridViewColumn Header="Ingrediente" Width="250" DisplayMemberBinding="{Binding Ingrediente}"/>
-					<GridViewColumn Header="Quantidade" Width="250" DisplayMemberBinding="{Binding Quantidade}"/>
-				</GridView>
-			</ListView.View>
-		</ListView>
-        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="70,319,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_Cancela" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85"/>
+        <Button Content="Confirma" HorizontalAlignment="Left" Margin="70,93.459,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_Finaliza" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85" Grid.Row="1"/>
+        <ListView x:Name="examList" SelectionMode="Single" Margin="322,173,56,183" SelectionChanged="examList_SelectionChanged" Grid.RowSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Ingrediente" Width="250" DisplayMemberBinding="{Binding Ingrediente}"/>
+                    <GridViewColumn Header="Quantidade" Width="250" DisplayMemberBinding="{Binding Quantidade}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="70,8.459,0,0" VerticalAlignment="Top" Width="225" Height="60" Click="Button_Cancela" FontFamily="Nirmala UI Semilight" FontSize="24" Background="#FFB29E85" Grid.Row="1"/>
 
     </Grid>
 </Window>

@@ -66,6 +66,9 @@
     <Compile Include="Entity\Transacao.cs" />
     <Compile Include="Entity\TransacaoAdm.cs" />
     <Compile Include="Entity\TransacaoPedido.cs" />
+    <Compile Include="Interface\AdicionaIngrediente.xaml.cs">
+      <DependentUpon>AdicionaIngrediente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interface\AdicionaProdutoPedido.xaml.cs">
       <DependentUpon>AdicionaProdutoPedido.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Interface\AdicionaIngrediente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Interface\AdicionaProdutoPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

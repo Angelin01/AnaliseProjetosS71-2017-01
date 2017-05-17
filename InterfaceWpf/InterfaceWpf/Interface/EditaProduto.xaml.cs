@@ -46,8 +46,9 @@ namespace InterfaceWpf
         }
         private void Button_AdicionaIngrediente(object sender, RoutedEventArgs e)
         {
-
-		}
+            App.Current.MainWindow = new AdicionaIngrediente();
+            App.Current.MainWindow.Show();
+        }
 
         private void Button_Finaliza(object sender, RoutedEventArgs e)
         {
