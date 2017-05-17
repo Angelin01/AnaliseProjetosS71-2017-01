@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfaceWpf.Interface"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="ConsultaFuncionario" Height="720" Width="1080" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="ThreeDBorderWindow" >
     <Grid Height="720" Width="1080" >
@@ -27,31 +28,59 @@
         <ListView Margin="10,47,10,50" Name="lvUsers" Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="" Width="150" >
+                    <GridViewColumn Header="" Width="48" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <Button Content="Edita" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Click="Button_Edit"/>
+                                    <Button Content="Editar" Command="{Binding [0]}" Click="Button_Edit"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Nome" Width="300" DisplayMemberBinding="{Binding Nome}" />
-                    <GridViewColumn Header="Telefone" Width="150" DisplayMemberBinding="{Binding Telefone}" />
-                    <GridViewColumn Header="Salário" Width="150" DisplayMemberBinding="{Binding Salario}" />
-                    <GridViewColumn Header="Email" Width="150" DisplayMemberBinding="{Binding Email}" />
-                    <GridViewColumn Header="" Width="150" >
+                    <GridViewColumn Header="Nome" Width="65" DisplayMemberBinding="{Binding [1]}" />
+                    <GridViewColumn Header="Endereço" Width="70" DisplayMemberBinding="{Binding [2]}" />
+                    <GridViewColumn Header="Email" Width="90" DisplayMemberBinding="{Binding [3]}" />
+                    <GridViewColumn Header="Email Alt." Width="90" DisplayMemberBinding="{Binding [4]}" />
+                    <GridViewColumn Header="RG" Width="70" DisplayMemberBinding="{Binding [5]}" />
+                    <GridViewColumn Header="CPF" Width="70" DisplayMemberBinding="{Binding [6]}" />
+                    <GridViewColumn Header="Telefone" Width="70" DisplayMemberBinding="{Binding [7]}" />
+                    <GridViewColumn Header="Tel. Celular" Width="70" DisplayMemberBinding="{Binding [8]}" />
+                    <GridViewColumn Header="CTPS" Width="70" DisplayMemberBinding="{Binding [9]}" />
+                    <GridViewColumn Header="Pai" Width="65" DisplayMemberBinding="{Binding [10]}" />
+                    <GridViewColumn Header="Mãe" Width="65" DisplayMemberBinding="{Binding [11]}" />
+                    <GridViewColumn Header="Login" Width="70" DisplayMemberBinding="{Binding [12]}" />
+                    <GridViewColumn Header="Cargo" Width="60" DisplayMemberBinding="{Binding [13]}" />
+                    <GridViewColumn Header="Salário" Width="70" DisplayMemberBinding="{Binding [14]}" />
+                    <GridViewColumn Header="" Width="63" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <Button Content="Remove" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Click="Button_Remove"/>
+                                    <Button Content="Remover" Command="{Binding [15]}" Click="Button_Remove"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
-            <ListViewItem Content="ListViewItem"/>
+            <ListViewItem>
+                <x:Array Type="{x:Type sys:String}">
+                    <sys:String>1</sys:String>
+                    <sys:String>Thiago Bispo</sys:String>
+                    <sys:String>Rua Bonita, 12</sys:String>
+                    <sys:String>thiagob@gmail.com</sys:String>
+                    <sys:String>thiago@hotmail.com</sys:String>
+                    <sys:String>8.000.000-1</sys:String>
+                    <sys:String>090.000.000-00</sys:String>
+                    <sys:String>(41) 3333-3333</sys:String>
+                    <sys:String>(41) 9999-9999</sys:String>
+                    <sys:String>12345612304</sys:String>
+                    <sys:String>Lucio</sys:String>
+                    <sys:String>Margarete</sys:String>
+                    <sys:String>thico10</sys:String>
+                    <sys:String>F</sys:String>
+                    <sys:String>R$980,00</sys:String>
+                </x:Array>
+            </ListViewItem>
         </ListView>
         <Button Content="Voltar" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
 
