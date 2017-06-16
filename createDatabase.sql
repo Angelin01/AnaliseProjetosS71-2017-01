@@ -1,7 +1,8 @@
 -- Só vai funfar em MySQL
 
 CREATE TABLE IF NOT EXISTS Funcionario (
-    cpf VARCHAR(14), -- Formato "123.456.789-00"
+    id_funcionario INT AUTO_INCREMENT,
+	cpf VARCHAR(14) NOT NULL UNIQUE, -- Formato "123.456.789-00"
     nome VARCHAR(255) NOT NULL,
     nome_da_mae VARCHAR(255),
     nome_do_pai VARCHAR(255),
@@ -15,9 +16,16 @@ CREATE TABLE IF NOT EXISTS Funcionario (
     login VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     salario INT NOT NULL,
-    cargo CHAR NOT NULL,
+    cargo VARCHAR(255),
     
-    PRIMARY KEY(cpf)
+    PRIMARY KEY(id_funcionario)
+);
+
+CREATE TABLE IF NOT EXISTS Administrador (
+	id_administrador INT AUTO_INCREMENT,
+	
+	PRIMARY KEY(id_administrador),
+	FOREIGN KEY (id_administrador) REFERENCES Funcionario(id_funcionario)
 );
 
 CREATE TABLE IF NOT EXISTS Recurso (
@@ -38,14 +46,14 @@ CREATE TABLE IF NOT EXISTS Produto (
     PRIMARY KEY(id)
 );
 
-CREATE TABLE IF NOT EXISTS ProdutoIngrediente (
-    idProduto INT,
-    idIngrediente INT,
+CREATE TABLE IF NOT EXISTS Ingrediente (
+    id_produto INT,
+    id_recurso INT,
     quantidade FLOAT NOT NULL,
     
-    PRIMARY KEY(idProduto, idIngrediente),
-    FOREIGN KEY (idProduto) REFERENCES Produto(id),
-    FOREIGN KEY (idRecurso) REFERENCES Recurso(id)
+    PRIMARY KEY(id_produto, id_recurso),
+    FOREIGN KEY (id_produto) REFERENCES Produto(id),
+    FOREIGN KEY (id_recurso) REFERENCES Recurso(id)
 );
 
 CREATE TABLE IF NOT EXISTS Pedido (
@@ -53,18 +61,20 @@ CREATE TABLE IF NOT EXISTS Pedido (
     estado CHAR NOT NULL,
     data_hora DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     observacao VARCHAR(255),
+	id_funcionario INT NOT NULL,
     
     PRIMARY KEY(id)
+	FOREIGN KEY (id_funcionario) REFERENCES Funcionario(id_funcionario)
 );
 
-CREATE TABLE IF NOT EXISTS PedidoProduto (
-    idProduto INT,
-    idPedido INT,
+CREATE TABLE IF NOT EXISTS ProdutoPedido (
+    id_produto INT,
+    id_pedido INT,
     quantidade FLOAT NOT NULL,
     
-    PRIMARY KEY(idProduto, idPedido),
-    FOREIGN KEY (idProduto) REFERENCES Produto(id),
-    FOREIGN KEY (idPedido) REFERENCES Pedido(id)
+    PRIMARY KEY(id_produto, id_pedido),
+    FOREIGN KEY (id_produto) REFERENCES Produto(id),
+    FOREIGN KEY (id_pedido) REFERENCES Pedido(id)
 );
 
 CREATE TABLE IF NOT EXISTS Transacao (
@@ -72,14 +82,8 @@ CREATE TABLE IF NOT EXISTS Transacao (
     valor INT NOT NULL,
     data_hora DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     descricao VARCHAR(255),
+	id_administrador INT NOT NULL,
     
     PRIMARY KEY(id)
-);
-
-CREATE TABLE IF NOT EXISTS TransacaoPedido (
-    idPedido INT,
-    idTransacao INT,
-    
-    FOREIGN KEY (idTransacao) REFERENCES Transacao(id),
-    FOREIGN KEY (idPedido) REFERENCES Pedido(id)
+	FOREIGN KEY (id_administrador) REFERENCES Administrador(id_administrador)
 );
