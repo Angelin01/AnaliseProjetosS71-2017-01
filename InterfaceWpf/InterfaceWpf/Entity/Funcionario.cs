@@ -77,7 +77,7 @@ namespace InterfaceWpf.Entity
 				MySqlCommand cmd = new MySqlCommand();
 				cmd.Connection = conn;
 
-				cmd.CommandText = "INSERT INTO Funcionario VALUES (@cpf, @nome, @nomemae, @nomepai, @rg, @ctps, @ender, @tel, @cel, @email, @emailalt, @login, @senha, @salario, @cargo)";
+				cmd.CommandText = "INSERT INTO Funcionario (cpf, nome, nome_da_mae, nome_do_pai, rg, ctps, endereco, telefone, telefone_cel, email, email_alt, login, senha, salario, cargo) VALUES (@cpf, @nome, @nomemae, @nomepai, @rg, @ctps, @ender, @tel, @cel, @email, @emailalt, @login, @senha, @salario, @cargo)";
 				cmd.Prepare();
 				cmd.Parameters.AddWithValue("@cpf", Cpf);
 				cmd.Parameters.AddWithValue("@nome", Nome);

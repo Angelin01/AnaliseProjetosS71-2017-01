@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InterfaceWpf.Class;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,9 +28,115 @@ namespace InterfaceWpf.Entity {
         public string NomeDoFornecedor { get => nomeDoFornecedor; set => nomeDoFornecedor = value; }
         public string TelefoneDoFornecedor { get => telefoneDoFornecedor; set => telefoneDoFornecedor = value; }
 
-        public void RegistrarRecurso() { }
-        public void EditarRecurso() { }
-        public void DeletarRecurso() { }
+        public bool RegistrarRecurso() {
+			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
+				try {
+					conn.Open();
+				}
+				catch (MySqlException ex) {
+					// Conexão com o banco de dados falhou.
+					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
+					//MessageBox.Show(ex.Message);
+					return false;
+				}
+
+				MySqlCommand cmd = new MySqlCommand();
+				cmd.Connection = conn;
+
+				cmd.CommandText = "INSERT INTO Recurso (id_recurso, nome, quantidade, nome_fornecedor, tel_fornecedor) VALUES (@id, @nome, @quant, @nomeforn, @telforn)";
+				cmd.Prepare();
+				cmd.Parameters.AddWithValue("@id", idRecurso);
+				cmd.Parameters.AddWithValue("@nome", nome);
+				cmd.Parameters.AddWithValue("@quant", quantidade);
+				cmd.Parameters.AddWithValue("@nomeforn", nomeDoFornecedor);
+				cmd.Parameters.AddWithValue("@telforn", telefoneDoFornecedor);
+
+				try {
+					cmd.ExecuteNonQuery();
+				}
+				catch (MySqlException ex) {
+					// Query falhou.
+					// Possível razão: chave primária já existe.
+					//MessageBox.Show(ex.Message);
+					return false;
+				}
+
+				conn.Close();
+			}
+			return true;
+		}
+
+        public bool EditarRecurso() {
+			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
+				try {
+					conn.Open();
+				}
+				catch (MySqlException ex) {
+					// Conexão com o banco de dados falhou.
+					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
+					//MessageBox.Show(ex.Message);
+					return false;
+				}
+
+				MySqlCommand cmd = new MySqlCommand();
+				cmd.Connection = conn;
+
+				cmd.CommandText = "UPDATE Recurso SET nome=@nome, quantidade=@quant, nome_fornecedor=@nomeforn, tel_fornecedor=@telforn WHERE id_recurso=@id";
+				cmd.Prepare();
+				cmd.Parameters.AddWithValue("@id", idRecurso);
+				cmd.Parameters.AddWithValue("@nome", nome);
+				cmd.Parameters.AddWithValue("@quant", quantidade);
+				cmd.Parameters.AddWithValue("@nomeforn", nomeDoFornecedor);
+				cmd.Parameters.AddWithValue("@telforn", telefoneDoFornecedor);
+
+				try {
+					cmd.ExecuteNonQuery();
+				}
+				catch (MySqlException ex) {
+					// Query falhou.
+					//MessageBox.Show(ex.Message);
+					return false;
+				}
+
+				conn.Close();
+			}
+			return true;
+		}
+
+        public bool DeletarRecurso() {
+			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
+				try {
+					conn.Open();
+				}
+				catch (MySqlException ex) {
+					// Conexão com o banco de dados falhou.
+					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
+					//MessageBox.Show(ex.Message);
+					return false;
+				}
+
+				MySqlCommand cmd = new MySqlCommand();
+				cmd.Connection = conn;
+
+				cmd.CommandText = "DELETE FROM Recurso WHERE id_recurso=@id";
+				cmd.Prepare();
+				cmd.Parameters.AddWithValue("@id", idRecurso);
+
+				try {
+					cmd.ExecuteNonQuery();
+				}
+				catch (MySqlException ex) {
+					// Query falhou.
+					// Possível razão: não pode deletar porque é usado por algum produto.
+					//MessageBox.Show(ex.Message);
+					return false;
+				}
+
+				conn.Close();
+			}
+			return true;
+		}
+
         public void VerificarRegrasDeNegocio() { }
     }
 }
