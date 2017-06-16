@@ -1,4 +1,6 @@
 ﻿using InterfaceWpf.Class;
+using InterfaceWpf.Entity;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +25,62 @@ namespace InterfaceWpf.Interface
         public ConsultaFuncionario()
         {
             InitializeComponent();
+			AtualizarLista();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+		public void AtualizarLista()
+		{
+			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
+				try {
+					conn.Open();
+				}
+				catch (MySqlException ex) {
+					// Conexão com o banco de dados falhou.
+					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
+					//MessageBox.Show(ex.Message);
+					return;
+				}
+
+				MySqlCommand cmd = new MySqlCommand();
+				cmd.Connection = conn;
+
+				cmd.CommandText = "SELECT nome, nome_da_mae, nome_do_pai, cpf, rg, ctps, endereco, telefone, telefone_cel, email, email_alt, login, senha, salario, cargo FROM Funcionario";
+
+				MySqlDataReader reader;
+				try {
+					reader = cmd.ExecuteReader();
+				}
+				catch (MySqlException ex) {
+					// Query falhou.
+					return;
+				}
+
+				while (reader.Read()) {
+					Funcionario f = new Funcionario(
+						reader.GetString(0),
+						reader.GetString(1),
+						reader.GetString(2),
+						reader.GetString(3),
+						reader.GetString(4),
+						reader.GetString(5),
+						reader.GetString(6),
+						reader.GetString(7),
+						reader.GetString(8),
+						reader.GetString(9),
+						reader.GetString(10),
+						reader.GetString(11),
+						reader.GetString(12),
+						reader.GetInt32(13),
+						reader.GetString(14)
+						);
+					lvUsers.Items.Add(f);
+				}
+
+				conn.Close();
+			}
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }

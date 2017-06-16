@@ -26,62 +26,43 @@
             </Label.OpacityMask>
         </Label>
         <ListView Margin="-22,35,-14,62" Name="lvUsers" Grid.Row="1" HorizontalAlignment="Center">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="" Width="48" >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <Button Content="Editar" Command="{Binding [0]}" Click="Button_Edit"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Nome" Width="65" DisplayMemberBinding="{Binding [1]}" />
-                    <GridViewColumn Header="Endereço" Width="70" DisplayMemberBinding="{Binding [2]}" />
-                    <GridViewColumn Header="Email" Width="90" DisplayMemberBinding="{Binding [3]}" />
-                    <GridViewColumn Header="Email Alt." Width="90" DisplayMemberBinding="{Binding [4]}" />
-                    <GridViewColumn Header="RG" Width="70" DisplayMemberBinding="{Binding [5]}" />
-                    <GridViewColumn Header="CPF" Width="70" DisplayMemberBinding="{Binding [6]}" />
-                    <GridViewColumn Header="Telefone" Width="70" DisplayMemberBinding="{Binding [7]}" />
-                    <GridViewColumn Header="Tel. Celular" Width="70" DisplayMemberBinding="{Binding [8]}" />
-                    <GridViewColumn Header="CTPS" Width="70" DisplayMemberBinding="{Binding [9]}" />
-                    <GridViewColumn Header="Pai" Width="65" DisplayMemberBinding="{Binding [10]}" />
-                    <GridViewColumn Header="Mãe" Width="65" DisplayMemberBinding="{Binding [11]}" />
-                    <GridViewColumn Header="Login" Width="70" DisplayMemberBinding="{Binding [12]}" />
-                    <GridViewColumn Header="Cargo" Width="60" DisplayMemberBinding="{Binding [13]}" />
-                    <GridViewColumn Header="Salário" Width="70" DisplayMemberBinding="{Binding [14]}" />
-                    <GridViewColumn Header="" Width="63" >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <Button Content="Remover" Command="{Binding [15]}" Click="Button_Remove"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-            <ListViewItem>
-                <x:Array Type="{x:Type sys:String}">
-                    <sys:String>1</sys:String>
-                    <sys:String>Thiago Bispo</sys:String>
-                    <sys:String>Rua Bonita, 12</sys:String>
-                    <sys:String>thiagob@gmail.com</sys:String>
-                    <sys:String>thiago@hotmail.com</sys:String>
-                    <sys:String>8.000.000-1</sys:String>
-                    <sys:String>090.000.000-00</sys:String>
-                    <sys:String>(41) 3333-3333</sys:String>
-                    <sys:String>(41) 9999-9999</sys:String>
-                    <sys:String>12345612304</sys:String>
-                    <sys:String>Lucio</sys:String>
-                    <sys:String>Margarete</sys:String>
-                    <sys:String>thico10</sys:String>
-                    <sys:String>F</sys:String>
-                    <sys:String>R$980,00</sys:String>
-                </x:Array>
-            </ListViewItem>
-        </ListView>
+			<ListView.View>
+				<GridView>
+					<GridViewColumn Header="" Width="48" >
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<StackPanel>
+									<Button Content="Editar" Command="{Binding [0]}" Click="Button_Edit"/>
+								</StackPanel>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+					<GridViewColumn Header="Nome" Width="65" DisplayMemberBinding="{Binding Nome}" />
+					<GridViewColumn Header="Endereço" Width="70" DisplayMemberBinding="{Binding Endereco}" />
+					<GridViewColumn Header="Email" Width="90" DisplayMemberBinding="{Binding EmailPrincipal}" />
+					<GridViewColumn Header="Email Alt." Width="90" DisplayMemberBinding="{Binding EmailAlternativo}" />
+					<GridViewColumn Header="RG" Width="70" DisplayMemberBinding="{Binding Rg}" />
+					<GridViewColumn Header="CPF" Width="70" DisplayMemberBinding="{Binding Cpf}" />
+					<GridViewColumn Header="Telefone" Width="70" DisplayMemberBinding="{Binding TelefonePrincipal}" />
+					<GridViewColumn Header="Tel. Celular" Width="70" DisplayMemberBinding="{Binding TelefoneCelular}" />
+					<GridViewColumn Header="CTPS" Width="70" DisplayMemberBinding="{Binding Ctps}" />
+					<GridViewColumn Header="Pai" Width="65" DisplayMemberBinding="{Binding NomePai}" />
+					<GridViewColumn Header="Mãe" Width="65" DisplayMemberBinding="{Binding NomeMae}" />
+					<GridViewColumn Header="Login" Width="70" DisplayMemberBinding="{Binding Login}" />
+					<GridViewColumn Header="Cargo" Width="60" DisplayMemberBinding="{Binding Cargo}" />
+					<GridViewColumn Header="Salário" Width="70" DisplayMemberBinding="{Binding Salario}" />
+					<GridViewColumn Header="" Width="63" >
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<StackPanel>
+									<Button Content="Remover" Command="{Binding [15]}" Click="Button_Remove"/>
+								</StackPanel>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+				</GridView>
+			</ListView.View>
+		</ListView>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Button Content="Voltar" Width="100" Click="Button_Click_1"/>
             <Label Content="Nome:" Margin="10,0,0,0" />
