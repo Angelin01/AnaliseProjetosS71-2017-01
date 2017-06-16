@@ -12,7 +12,7 @@ namespace InterfaceWpf.Class
     class Controller
     {
         private static Controller instance;
-		private string connStr;
+		public string connStr;
 
 		private Controller()
         {
