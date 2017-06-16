@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InterfaceWpf.Class;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,11 +61,135 @@ namespace InterfaceWpf.Entity
             this.Cargo = cargo;
         }
 
+		// Métodos
+		public bool CadastrarDadosFuncionario() {
+			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
+				try {
+					conn.Open();
+				}
+				catch (MySqlException ex) {
+					// Conexão com o banco de dados falhou.
+					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
+					//MessageBox.Show(ex.Message);
+					return false;
+				}
 
-        // Métodos
-        public void CadastrarDadosFuncionario() { }
-        public void EditarDadosFuncionario() { }
-        public void DeletarDadosFuncionario() { }
+				MySqlCommand cmd = new MySqlCommand();
+				cmd.Connection = conn;
+
+				cmd.CommandText = "INSERT INTO Funcionario (cpf, nome, nome_da_mae, nome_do_pai, rg, ctps, endereco, telefone, telefone_cel, email, email_alt, login, senha, salario, cargo) VALUES (@cpf, @nome, @nomemae, @nomepai, @rg, @ctps, @ender, @tel, @cel, @email, @emailalt, @login, @senha, @salario, @cargo)";
+				cmd.Prepare();
+				cmd.Parameters.AddWithValue("@cpf", Cpf);
+				cmd.Parameters.AddWithValue("@nome", Nome);
+				cmd.Parameters.AddWithValue("@nomemae", NomeMae);
+				cmd.Parameters.AddWithValue("@nomepai", NomePai);
+				cmd.Parameters.AddWithValue("@rg", Rg);
+				cmd.Parameters.AddWithValue("@ctps", Ctps);
+				cmd.Parameters.AddWithValue("@ender", Endereco);
+				cmd.Parameters.AddWithValue("@tel", TelefonePrincipal);
+				cmd.Parameters.AddWithValue("@cel", TelefoneCelular);
+				cmd.Parameters.AddWithValue("@email", EmailPrincipal);
+				cmd.Parameters.AddWithValue("@emailalt", EmailAlternativo);
+				cmd.Parameters.AddWithValue("@login", Login);
+				cmd.Parameters.AddWithValue("@senha", Senha);
+				cmd.Parameters.AddWithValue("@salario", Salario);
+				cmd.Parameters.AddWithValue("@cargo", Cargo);
+
+				try {
+					cmd.ExecuteNonQuery();
+				}
+				catch (MySqlException ex) {
+					// Query falhou.
+					// Possível razão: chave primária já existe.
+					//MessageBox.Show(ex.Message);
+					return false;
+				}
+
+				conn.Close();
+			}
+			return true;
+		}
+
+        public bool EditarDadosFuncionario() {
+			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
+				try {
+					conn.Open();
+				}
+				catch (MySqlException ex) {
+					// Conexão com o banco de dados falhou.
+					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
+					//MessageBox.Show(ex.Message);
+					return false;
+				}
+
+				MySqlCommand cmd = new MySqlCommand();
+				cmd.Connection = conn;
+
+				cmd.CommandText = "UPDATE Funcionario SET nome=@nome, nome_da_mae=@nomemae, nome_do_pai=@nomepai, rg=@rg, ctps=@ctps, endereco=@ender, telefone=@tel, telefone_cel=@cel, email=@email, email_alt=@emailalt, login=@login, senha=@senha, salario=@salario, cargo=@cargo WHERE cpf=@cpf";
+				cmd.Prepare();
+				cmd.Parameters.AddWithValue("@cpf", Cpf);
+				cmd.Parameters.AddWithValue("@nome", Nome);
+				cmd.Parameters.AddWithValue("@nomemae", NomeMae);
+				cmd.Parameters.AddWithValue("@nomepai", NomePai);
+				cmd.Parameters.AddWithValue("@rg", Rg);
+				cmd.Parameters.AddWithValue("@ctps", Ctps);
+				cmd.Parameters.AddWithValue("@ender", Endereco);
+				cmd.Parameters.AddWithValue("@tel", TelefonePrincipal);
+				cmd.Parameters.AddWithValue("@cel", TelefoneCelular);
+				cmd.Parameters.AddWithValue("@email", EmailPrincipal);
+				cmd.Parameters.AddWithValue("@emailalt", EmailAlternativo);
+				cmd.Parameters.AddWithValue("@login", Login);
+				cmd.Parameters.AddWithValue("@senha", Senha);
+				cmd.Parameters.AddWithValue("@salario", Salario);
+				cmd.Parameters.AddWithValue("@cargo", Cargo);
+
+				try {
+					cmd.ExecuteNonQuery();
+				}
+				catch (MySqlException ex) {
+					// Query falhou.
+					//MessageBox.Show(ex.Message);
+					return false;
+				}
+
+				conn.Close();
+			}
+			return true;
+		}
+
+        public bool DeletarDadosFuncionario() {
+			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
+				try {
+					conn.Open();
+				}
+				catch (MySqlException ex) {
+					// Conexão com o banco de dados falhou.
+					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
+					//MessageBox.Show(ex.Message);
+					return false;
+				}
+
+				MySqlCommand cmd = new MySqlCommand();
+				cmd.Connection = conn;
+
+				cmd.CommandText = "DELETE FROM Funcionario WHERE cpf=@cpf";
+				cmd.Prepare();
+				cmd.Parameters.AddWithValue("@cpf", Cpf);
+
+				try {
+					cmd.ExecuteNonQuery();
+				}
+				catch (MySqlException ex) {
+					// Query falhou.
+					//MessageBox.Show(ex.Message);
+					return false;
+				}
+
+				conn.Close();
+			}
+			return true;
+		}
+
         public void VerificarRegraDeNegocio() { }
     }
 }
