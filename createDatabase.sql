@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS Pedido (
     observacao VARCHAR(255),
 	id_funcionario INT NOT NULL,
     
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
 	FOREIGN KEY (id_funcionario) REFERENCES Funcionario(id_funcionario)
 );
 
@@ -84,6 +84,6 @@ CREATE TABLE IF NOT EXISTS Transacao (
     descricao VARCHAR(255),
 	id_administrador INT NOT NULL,
     
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
 	FOREIGN KEY (id_administrador) REFERENCES Administrador(id_administrador)
 );
