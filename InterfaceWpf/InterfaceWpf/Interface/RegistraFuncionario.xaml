@@ -1,0 +1,55 @@
+﻿<Window x:Class="InterfaceWpf.RegistraFuncionario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InterfaceWpf"
+        mc:Ignorable="d"
+        Title="RegistraFuncionario" Height="720" Width="1080" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="ThreeDBorderWindow">
+    <Grid x:Name="grid" Width="1080" Height="720">
+        <Label Content="REGISTRO DE FUNCIONÁRIO" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" Height="43" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0,21,0,0" Background="#FFB29E85" VerticalContentAlignment="Center" Width="6000">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF4F4F4F" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <Label Content="Nome" HorizontalAlignment="Left" Margin="278,91,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" VerticalContentAlignment="Center"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="278,199,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" VerticalContentAlignment="Center"/>
+        <Label Content="Endereço" HorizontalAlignment="Left" Margin="278,145,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" VerticalContentAlignment="Center"/>
+        <Label Content="Email Alternativo" HorizontalAlignment="Left" Margin="564,199,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontFamily="Nirmala UI Semilight" Width="188"/>
+        <Label Content="Telefone" HorizontalAlignment="Left" Margin="278,304,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" VerticalContentAlignment="Center"/>
+        <Label Content="RG" HorizontalAlignment="Left" Margin="278,250,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" VerticalContentAlignment="Center"/>
+        <Label Content="Telefone Celular" HorizontalAlignment="Left" Margin="564,304,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontFamily="Nirmala UI Semilight"/>
+        <Label Content="CPF" HorizontalAlignment="Left" Margin="564,250,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontFamily="Nirmala UI Semilight"/>
+        <Label Content="CTPS" HorizontalAlignment="Left" Margin="278,353,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" VerticalContentAlignment="Center"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="278,451,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" VerticalContentAlignment="Center"/>
+        <Label Content="Nome do pai" HorizontalAlignment="Left" Margin="278,404,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" VerticalContentAlignment="Center"/>
+        <Label Content="Senha" HorizontalAlignment="Left" Margin="564,451,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontFamily="Nirmala UI Semilight"/>
+        <Label Content="Nome da mãe" HorizontalAlignment="Left" Margin="564,404,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontFamily="Nirmala UI Semilight"/>
+        <Button Content="Confirma" HorizontalAlignment="Center" Margin="381,584,389,96" Width="310" Height="40" FontFamily="Nirmala UI Semilight" FontSize="22" Click="Button_Click" BorderBrush="{x:Null}" Background="#FFB29E85" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+        <Label Content="Cargo" HorizontalAlignment="Left" Margin="278,503,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" VerticalContentAlignment="Center"/>
+        <Label Content="Salario" HorizontalAlignment="Left" Margin="564,503,0,0" VerticalAlignment="Top" FontFamily="Nirmala UI Semilight" VerticalContentAlignment="Center"/>
+        <ComboBox HorizontalAlignment="Left" Margin="278,529,0,0" VerticalAlignment="Top" Width="230" SelectionChanged="ComboBox_SelectionChanged" VerticalContentAlignment="Center">
+            <ComboBoxItem Content="Funcionário" HorizontalAlignment="Left" Width="227" Selected="ComboBoxItem_Funcionario"/>
+            <ComboBoxItem Content="Administrador" Selected="ComboBoxItem_Admin"/>
+        </ComboBox>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="564,528,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TextChanged="TextBox_Salario" VerticalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="564,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TextChanged="TextBox_Senha" VerticalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="564,430,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TextChanged="TextBox_NomeDaMae" VerticalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="564,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TextChanged="TextBox_TelefoneCel" VerticalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="564,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TextChanged="TextBox_Cpf" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="EmailA" HorizontalAlignment="Left" Height="23" Margin="564,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TextChanged="TextBox_EmailA" VerticalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="278,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TextChanged="TextBox_Telefone" VerticalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="278,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TextChanged="TextBox_rg" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="EmailA_Copy" HorizontalAlignment="Left" Height="23" Margin="278,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TextChanged="TextBox_Email" VerticalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="278,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TextChanged="TextBox_Login" VerticalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="278,427,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TextChanged="TextBox_nomeDoPai" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="EmailA_Copy1" HorizontalAlignment="Left" Height="23" Margin="278,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TextChanged="TextBox_ctps" VerticalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="278,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TextChanged="TextBox_Endereco" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="EmailA_Copy2" HorizontalAlignment="Left" Height="23" Margin="278,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TextChanged="TextBox_Nome" VerticalContentAlignment="Center"/>
+        <Button Content="Cancelar" HorizontalAlignment="Center" Margin="381,629,389,51" Width="310" Height="40" FontFamily="Nirmala UI Semilight" FontSize="22" BorderBrush="{x:Null}" Background="#FFB29E85" VerticalContentAlignment="Center" VerticalAlignment="Center" Click="Button_Cancela"/>
+
+    </Grid>
+</Window>
