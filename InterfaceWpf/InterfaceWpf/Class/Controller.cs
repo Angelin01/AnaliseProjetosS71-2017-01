@@ -19,7 +19,7 @@ namespace InterfaceWpf.Class
             login = null;
             senha = null;
 
-			connStr = "server=127.0.0.1;uid=root;pwd=;database=TesteCSharp;";
+			connStr = "server=127.0.0.1;uid=root;pwd=;database=Cafeteria;";
 		}
 
         public static Controller Instance
