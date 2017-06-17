@@ -171,20 +171,62 @@ namespace InterfaceWpf.Entity
 					return false;
 				}
 
-				MySqlCommand cmd = new MySqlCommand();
-				cmd.Connection = conn;
+				int id = -1;
 
-				cmd.CommandText = "DELETE FROM Funcionario WHERE cpf=@cpf";
-				cmd.Prepare();
-				cmd.Parameters.AddWithValue("@cpf", Cpf);
+				using (MySqlCommand cmd = new MySqlCommand()) {
+					cmd.Connection = conn;
+					cmd.CommandText = "SELECT id_administrador FROM Administrador WHERE id_administrador = (SELECT id_funcionario FROM Funcionario WHERE cpf=@cpf)";
+					cmd.Prepare();
+					cmd.Parameters.AddWithValue("@cpf", Cpf);
 
-				try {
-					cmd.ExecuteNonQuery();
+					MySqlDataReader reader;
+					try {
+						reader = cmd.ExecuteReader();
+					}
+					catch (MySqlException ex) {
+						// Query falhou.
+						return false;
+					}
+
+					if (reader.Read()) {
+						id = reader.GetInt32(0);
+					}
+
+					reader.Close();
 				}
-				catch (MySqlException ex) {
-					// Query falhou.
-					//MessageBox.Show(ex.Message);
-					return false;
+
+				if (id >= 0) {
+					using (MySqlCommand cmd = new MySqlCommand()) {
+						cmd.Connection = conn;
+						cmd.CommandText = "DELETE FROM Administrador WHERE id_administrador=@id";
+						cmd.Prepare();
+						cmd.Parameters.AddWithValue("@id", id);
+
+						try {
+							cmd.ExecuteNonQuery();
+						}
+						catch (MySqlException ex) {
+							// Query falhou.
+							//MessageBox.Show(ex.Message);
+							return false;
+						}
+					}
+				}
+
+				using (MySqlCommand cmd = new MySqlCommand()) {
+					cmd.Connection = conn;
+					cmd.CommandText = "DELETE FROM Funcionario WHERE cpf=@cpf";
+					cmd.Prepare();
+					cmd.Parameters.AddWithValue("@cpf", Cpf);
+
+					try {
+						cmd.ExecuteNonQuery();
+					}
+					catch (MySqlException ex) {
+						// Query falhou.
+						//MessageBox.Show(ex.Message);
+						return false;
+					}
 				}
 
 				conn.Close();
