@@ -32,7 +32,7 @@
 						<GridViewColumn.CellTemplate>
 							<DataTemplate>
 								<StackPanel>
-									<Button Content="Editar" Command="{Binding [0]}" Click="Button_Edit"/>
+									<Button Content="Editar" Tag="{Binding Cpf}" Click="Button_Edit"/>
 								</StackPanel>
 							</DataTemplate>
 						</GridViewColumn.CellTemplate>
@@ -55,7 +55,7 @@
 						<GridViewColumn.CellTemplate>
 							<DataTemplate>
 								<StackPanel>
-									<Button Content="Remover" Command="{Binding [15]}" Click="Button_Remove"/>
+									<Button Content="Remover" Tag="{Binding Cpf}" Click="Button_Remove"/>
 								</StackPanel>
 							</DataTemplate>
 						</GridViewColumn.CellTemplate>

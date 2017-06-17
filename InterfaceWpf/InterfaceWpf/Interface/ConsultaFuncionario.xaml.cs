@@ -84,26 +84,24 @@ namespace InterfaceWpf.Interface
         {
 
         }
-        private void Button_Remove(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente remover o Funcionário?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
-            if (messageBoxResult == MessageBoxResult.No) return;
+
+		private void Button_Remove(object sender, RoutedEventArgs e)
+		{
+			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente remover o Funcionário?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+			if (messageBoxResult == MessageBoxResult.No) return;
 			else {
-				StackPanel sp = VisualTreeHelper.GetParent(sender as Button) as StackPanel;
-				ContentPresenter cp = VisualTreeHelper.GetParent(sp) as ContentPresenter;
-				GridViewRowPresenter gvrp = VisualTreeHelper.GetParent(cp) as GridViewRowPresenter;
+				Button button = sender as Button;
+				string cpf = button.Tag.ToString();
 
-				TextBlock tb_cpf = VisualTreeHelper.GetChild(gvrp, 6) as TextBlock;
-
-				Funcionario f = new Funcionario(null, null, null, tb_cpf.Text, null, null, null, null, null, null, null, null, null, 0, null);
+				Funcionario f = new Funcionario(null, null, null, cpf, null, null, null, null, null, null, null, null, null, 0, null);
 				f.DeletarDadosFuncionario();
 
 				lvUsers.Items.Clear();
 				AtualizarLista();
 			}
-        }
+		}
 
-        private void Button_Edit(object sender, RoutedEventArgs e)
+		private void Button_Edit(object sender, RoutedEventArgs e)
         {
             App.Current.MainWindow = new EditaFuncionario();
             this.Close();
