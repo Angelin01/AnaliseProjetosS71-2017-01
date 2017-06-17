@@ -170,7 +170,7 @@ namespace InterfaceWpf
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Confirma os dados inseridos?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
 			if (messageBoxResult == MessageBoxResult.Yes) {
 
-                if(!Validar_Cpf(box_cpf.Text)) {
+                if(!Funcionario.Validar_Cpf(box_cpf.Text)) {
                     MessageBox.Show("O CPF inserido não é válido.\nPor favor, insira um CPF válido.", "Erro");
                     return;
                 }
