@@ -77,10 +77,10 @@ namespace InterfaceWpf.Class
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = conn;
 
-                    cmd.CommandText = "SELECT login, cargo FROM Funcionario WHERE login LIKE @login AND senha LIKE @senha";
+                    cmd.CommandText = "SELECT login, cargo, senha FROM Funcionario WHERE login=@login";
                     cmd.Prepare();
                     cmd.Parameters.AddWithValue("@login", _login);
-                    cmd.Parameters.AddWithValue("@senha", SecurePasswordHasher.Hash(_senha));
+
                     MySqlDataReader reader;
                     try
                     {
@@ -93,22 +93,28 @@ namespace InterfaceWpf.Class
                         return;
                     }
 
-                    while (reader.Read())
+					string temp_login = null;
+					bool temp_admin = false;
+					string hash_senha = null;
+
+                    if(reader.Read())
                     {
-                        login = reader.GetString(0);
-                        
-                        admin = ( reader.GetString(1) == "Administrador" ? true : false );
+						temp_login = reader.GetString(0);
+						temp_admin = (reader.GetString(1) == "Administrador" ? true : false);
+						hash_senha = reader.GetString(2);
                     }
 
                     conn.Close();
 
-                    if(login == null)
+                    if(hash_senha == null || !SecurePasswordHasher.Verify(_senha, hash_senha))
                     {
                         MessageBox.Show("Login ou senha inválido(s).", "Falha no login");
                     }
                     else
                     {
-                        InterfaceFuncionario.MostrarJanelaOpcoes();
+						login = temp_login;
+						admin = temp_admin;
+						InterfaceFuncionario.MostrarJanelaOpcoes();
                     }
                 }
             }
