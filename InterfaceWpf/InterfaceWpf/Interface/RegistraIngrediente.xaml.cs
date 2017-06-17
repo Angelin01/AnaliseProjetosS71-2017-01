@@ -1,4 +1,5 @@
 ﻿using InterfaceWpf.Class;
+using InterfaceWpf.Entity;
 using InterfaceWpf.Interface;
 using System;
 using System.Collections.Generic;
@@ -68,25 +69,35 @@ namespace InterfaceWpf
 
 		private void Button_Confirma(object sender, RoutedEventArgs e)
         {
-			if(ValidateForm()) {
-				MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Confirma os dados inseridos?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
-				if (messageBoxResult == MessageBoxResult.Yes) {
-					Controller user = Controller.Instance;
+			Controller user = Controller.Instance;
 
-					Window main_window;
-					if (user.Login == "admin") {
-						main_window = new InicioAdministracao();
-					}
-					else {
-						main_window = new InicioFuncionario();
-					}
-					App.Current.MainWindow = main_window;
-					this.Close();
-					App.Current.MainWindow.Show();
-				}
-			}
-			else {
+			if (!ValidateForm()) {
 				MessageBox.Show("Todos os campos devem estar preenchidos.", "Erro");
+				return;
+			}
+
+			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Confirma os dados inseridos?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+			if (messageBoxResult == MessageBoxResult.Yes) {
+
+				// Talvez deva vir alguma validação aqui
+
+				Recurso r = new Recurso(0, txt_nome.Text, Convert.ToSingle(txt_quant.Text), txt_fornecedor.Text, txt_tel_fornecedor.Text);
+
+				if (!r.RegistrarRecurso()) {
+					MessageBox.Show("Não foi possível adicionar o recurso.", "Erro");
+					return;
+				}
+
+				Window main_window;
+				if (user.Login == "admin") {
+					main_window = new InicioAdministracao();
+				}
+				else {
+					main_window = new InicioFuncionario();
+				}
+				App.Current.MainWindow = main_window;
+				this.Close();
+				App.Current.MainWindow.Show();
 			}
 		}
     }

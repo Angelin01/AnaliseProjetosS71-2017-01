@@ -31,20 +31,20 @@
 						<GridViewColumn.CellTemplate>
 							<DataTemplate>
 								<StackPanel>
-									<Button Content="Edita" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Click="Button_Edit"/>
+									<Button Content="Edita" Width ="125" Tag="{Binding IdRecurso}" Click="Button_Edit"/>
 								</StackPanel>
 							</DataTemplate>
 						</GridViewColumn.CellTemplate>
 					</GridViewColumn>
 					<GridViewColumn Header="Nome" Width="300" DisplayMemberBinding="{Binding Nome}" />
 					<GridViewColumn Header="Quantidade" Width="150" DisplayMemberBinding="{Binding Quantidade}" />
-					<GridViewColumn Header="Fornecedor" Width="150" DisplayMemberBinding="{Binding Fornecedor}" />
-					<GridViewColumn Header="Telefone do fornecedor" Width="150" DisplayMemberBinding="{Binding Telefone}" />
+					<GridViewColumn Header="Fornecedor" Width="150" DisplayMemberBinding="{Binding NomeDoFornecedor}" />
+					<GridViewColumn Header="Telefone do fornecedor" Width="150" DisplayMemberBinding="{Binding TelefoneDoFornecedor}" />
 					<GridViewColumn Header="" Width="150" >
 						<GridViewColumn.CellTemplate>
 							<DataTemplate>
 								<StackPanel>
-									<Button Content="Remove" Width ="125" Command="{Binding Path=DataContext.RunCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Click="Button_Remove"/>
+									<Button Content="Remove" Width ="125" Tag="{Binding IdRecurso}" Click="Button_Remove"/>
 								</StackPanel>
 							</DataTemplate>
 						</GridViewColumn.CellTemplate>

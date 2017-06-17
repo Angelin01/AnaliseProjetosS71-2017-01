@@ -43,9 +43,8 @@ namespace InterfaceWpf.Entity {
 				MySqlCommand cmd = new MySqlCommand();
 				cmd.Connection = conn;
 
-				cmd.CommandText = "INSERT INTO Recurso (id_recurso, nome, quantidade, nome_fornecedor, tel_fornecedor) VALUES (@id, @nome, @quant, @nomeforn, @telforn)";
+				cmd.CommandText = "INSERT INTO Recurso (nome, quantidade, nome_fornecedor, telefone_fornecedor) VALUES (@nome, @quant, @nomeforn, @telforn)";
 				cmd.Prepare();
-				cmd.Parameters.AddWithValue("@id", idRecurso);
 				cmd.Parameters.AddWithValue("@nome", nome);
 				cmd.Parameters.AddWithValue("@quant", quantidade);
 				cmd.Parameters.AddWithValue("@nomeforn", nomeDoFornecedor);
@@ -81,7 +80,7 @@ namespace InterfaceWpf.Entity {
 				MySqlCommand cmd = new MySqlCommand();
 				cmd.Connection = conn;
 
-				cmd.CommandText = "UPDATE Recurso SET nome=@nome, quantidade=@quant, nome_fornecedor=@nomeforn, tel_fornecedor=@telforn WHERE id_recurso=@id";
+				cmd.CommandText = "UPDATE Recurso SET nome=@nome, quantidade=@quant, nome_fornecedor=@nomeforn, telefone_fornecedor=@telforn WHERE id=@id";
 				cmd.Prepare();
 				cmd.Parameters.AddWithValue("@id", idRecurso);
 				cmd.Parameters.AddWithValue("@nome", nome);
@@ -118,7 +117,7 @@ namespace InterfaceWpf.Entity {
 				MySqlCommand cmd = new MySqlCommand();
 				cmd.Connection = conn;
 
-				cmd.CommandText = "DELETE FROM Recurso WHERE id_recurso=@id";
+				cmd.CommandText = "DELETE FROM Recurso WHERE id=@id";
 				cmd.Prepare();
 				cmd.Parameters.AddWithValue("@id", idRecurso);
 

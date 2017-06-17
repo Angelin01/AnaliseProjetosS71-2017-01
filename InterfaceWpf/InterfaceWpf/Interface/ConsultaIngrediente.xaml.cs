@@ -1,4 +1,6 @@
 ﻿using InterfaceWpf.Class;
+using InterfaceWpf.Entity;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +25,52 @@ namespace InterfaceWpf.Interface
         public ConsultaIngrediente()
         {
             InitializeComponent();
-
-			List<Ingrediente> items = new List<Ingrediente>();
-			items.Add(new Ingrediente() { Nome = "Ingrediente Teste", Quantidade = 42, Fornecedor = "Thiago Bispo", Telefone = "(11) 99999-9999" });
-			lvUsers.ItemsSource = items;
+			AtualizarLista();
 		}
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
+		public void AtualizarLista()
+		{
+			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
+				try {
+					conn.Open();
+				}
+				catch (MySqlException ex) {
+					// Conexão com o banco de dados falhou.
+					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
+					//MessageBox.Show(ex.Message);
+					return;
+				}
+
+				MySqlCommand cmd = new MySqlCommand();
+				cmd.Connection = conn;
+
+				cmd.CommandText = "SELECT id, nome, quantidade, nome_fornecedor, telefone_fornecedor FROM Recurso";
+
+				MySqlDataReader reader;
+				try {
+					reader = cmd.ExecuteReader();
+				}
+				catch (MySqlException ex) {
+					// Query falhou.
+					return;
+				}
+
+				while (reader.Read()) {
+					Recurso r = new Recurso(
+						reader.GetInt32(0),
+						reader.GetString(1),
+						reader.GetFloat(2),
+						reader.GetString(3),
+						reader.GetString(4)
+						);
+					lvUsers.Items.Add(r);
+				}
+
+				conn.Close();
+			}
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e) {
             Controller user = Controller.Instance;
 
             Window main_window;
@@ -56,6 +97,18 @@ namespace InterfaceWpf.Interface
 		{
 			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente remover o produto?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
 			if (messageBoxResult == MessageBoxResult.No) return;
+
+			Button button = sender as Button;
+			int id = Convert.ToInt32(button.Tag.ToString());
+
+			Recurso r = new Recurso(id, null, 0, null, null);
+			if (!r.DeletarRecurso()) {
+				MessageBox.Show("Não foi possível remover o recurso do sistema.", "Erro");
+				return;
+			}
+
+			lvUsers.Items.Clear();
+			AtualizarLista();
 		}
 
         private void Button_Filtro(object sender, RoutedEventArgs e)
@@ -63,12 +116,4 @@ namespace InterfaceWpf.Interface
             MessageBox.Show("Resultados filtrados.", "Sucesso!");
         }
     }
-
-    public class Ingrediente
-	{
-		public string Nome { get; set; }
-		public int Quantidade { get; set; }
-		public string Fornecedor { get; set; }
-		public string Telefone { get; set; }
-	}
 }

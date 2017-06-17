@@ -89,16 +89,18 @@ namespace InterfaceWpf.Interface
 		{
 			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente remover o Funcionário?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
 			if (messageBoxResult == MessageBoxResult.No) return;
-			else {
-				Button button = sender as Button;
-				string cpf = button.Tag.ToString();
 
-				Funcionario f = new Funcionario(null, null, null, cpf, null, null, null, null, null, null, null, null, null, 0, null);
-				f.DeletarDadosFuncionario();
+			Button button = sender as Button;
+			string cpf = button.Tag.ToString();
 
-				lvUsers.Items.Clear();
-				AtualizarLista();
+			Funcionario f = new Funcionario(null, null, null, cpf, null, null, null, null, null, null, null, null, null, 0, null);
+			if (!f.DeletarDadosFuncionario()) {
+				MessageBox.Show("Não foi possível remover o funcionário do sistema.", "Erro");
+				return;
 			}
+
+			lvUsers.Items.Clear();
+			AtualizarLista();
 		}
 
 		private void Button_Edit(object sender, RoutedEventArgs e)
