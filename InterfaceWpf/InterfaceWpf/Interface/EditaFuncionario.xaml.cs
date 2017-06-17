@@ -1,5 +1,7 @@
 ﻿using InterfaceWpf.Class;
+using InterfaceWpf.Entity;
 using InterfaceWpf.Interface;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +23,79 @@ namespace InterfaceWpf
     /// </summary>
     public partial class EditaFuncionario : Window
     {
+		private Funcionario f;
+
         public EditaFuncionario()
         {
             InitializeComponent();
         }
+
+		public EditaFuncionario(string cpf)
+		{
+			InitializeComponent();
+
+			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
+				try {
+					conn.Open();
+				}
+				catch (MySqlException ex) {
+					// Conexão com o banco de dados falhou.
+					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
+					//MessageBox.Show(ex.Message);
+					return;
+				}
+
+				MySqlCommand cmd = new MySqlCommand();
+				cmd.Connection = conn;
+
+				cmd.CommandText = "SELECT nome, nome_da_mae, nome_do_pai, cpf, rg, ctps, endereco, telefone, telefone_cel, email, email_alt, login, senha, salario, cargo FROM Funcionario WHERE cpf=@cpf";
+				cmd.Prepare();
+				cmd.Parameters.AddWithValue("@cpf", cpf);
+
+				MySqlDataReader reader;
+				try {
+					reader = cmd.ExecuteReader();
+				}
+				catch (MySqlException ex) {
+					// Query falhou.
+					return;
+				}
+
+				reader.Read();
+				f = new Funcionario(
+					reader.GetString(0),
+					reader.GetString(1),
+					reader.GetString(2),
+					reader.GetString(3),
+					reader.GetString(4),
+					reader.GetString(5),
+					reader.GetString(6),
+					reader.GetString(7),
+					reader.GetString(8),
+					reader.GetString(9),
+					reader.GetString(10),
+					reader.GetString(11),
+					reader.GetString(12),
+					reader.GetInt32(13),
+					reader.GetString(14)
+					);
+
+				txt_celular.Text = f.TelefoneCelular;
+				txt_cpf.Text = f.Cpf;
+				txt_ctps.Text = f.Ctps;
+				txt_email.Text = f.EmailPrincipal;
+				txt_email_alt.Text = f.EmailAlternativo;
+				txt_endereco.Text = f.Endereco;
+				txt_login.Text = f.Login;
+				txt_mae.Text = f.NomeMae;
+				txt_name.Text = f.Nome;
+				txt_pai.Text = f.NomePai;
+				txt_rg.Text = f.Rg;
+				txt_salario.Text = f.Salario.ToString();
+				txt_telefone.Text = f.TelefonePrincipal;
+			}
+		}
+
         private void Button_Cancela(object sender, RoutedEventArgs e) {
             Controller user = Controller.Instance;
 

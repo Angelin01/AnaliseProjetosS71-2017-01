@@ -103,7 +103,10 @@ namespace InterfaceWpf.Interface
 
 		private void Button_Edit(object sender, RoutedEventArgs e)
         {
-            App.Current.MainWindow = new EditaFuncionario();
+			Button button = sender as Button;
+			string cpf = button.Tag.ToString();
+
+            App.Current.MainWindow = new EditaFuncionario(cpf);
             this.Close();
             App.Current.MainWindow.Show();
         }
