@@ -87,7 +87,7 @@ namespace InterfaceWpf.Interface
 
 		private void Button_Remove(object sender, RoutedEventArgs e)
 		{
-			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente remover o Funcionário?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+            MessageBoxResult messageBoxResult = InterfaceAdministrador.MostrarJanelaDeletarFuncionario();
 			if (messageBoxResult == MessageBoxResult.No) return;
 
 			Button button = sender as Button;
@@ -108,9 +108,7 @@ namespace InterfaceWpf.Interface
 			Button button = sender as Button;
 			string cpf = button.Tag.ToString();
 
-            App.Current.MainWindow = new EditaFuncionario(cpf);
-            this.Close();
-            App.Current.MainWindow.Show();
+            InterfaceAdministrador.MostrarJanelaEditarFuncionario(cpf);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e) {

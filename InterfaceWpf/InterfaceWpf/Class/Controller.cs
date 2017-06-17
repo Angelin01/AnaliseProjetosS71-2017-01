@@ -66,59 +66,12 @@ namespace InterfaceWpf.Class
             }
         }
 
-		public bool CadastrarFuncionario(ref Funcionario f)
-		{
-			using (MySqlConnection conn = new MySqlConnection(connStr)) {
-				try {
-					conn.Open();
-				}
-				catch (MySqlException ex) {
-					// Conexão com o banco de dados falhou.
-					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
-					MessageBox.Show(ex.Message);
-					return false;
-				}
-
-				MySqlCommand cmd = new MySqlCommand();
-				cmd.Connection = conn;
-
-				cmd.CommandText = "INSERT INTO Funcionario VALUES (@cpf, @nome, @nomemae, @nomepai, @rg, @ctps, @ender, @tel, @cel, @email, @emailalt, @login, @senha, @salario, @cargo)";
-				cmd.Prepare();
-				cmd.Parameters.AddWithValue("@cpf", f.Cpf);
-				cmd.Parameters.AddWithValue("@nome", f.Nome);
-				cmd.Parameters.AddWithValue("@nomemae", f.NomeMae);
-				cmd.Parameters.AddWithValue("@nomepai", f.NomePai);
-				cmd.Parameters.AddWithValue("@rg", f.Rg);
-				cmd.Parameters.AddWithValue("@ctps", f.Ctps);
-				cmd.Parameters.AddWithValue("@ender", f.Endereco);
-				cmd.Parameters.AddWithValue("@tel", f.TelefonePrincipal);
-				cmd.Parameters.AddWithValue("@cel", f.TelefoneCelular);
-				cmd.Parameters.AddWithValue("@email", f.EmailPrincipal);
-				cmd.Parameters.AddWithValue("@emailalt", f.EmailAlternativo);
-				cmd.Parameters.AddWithValue("@login", f.Login);
-				cmd.Parameters.AddWithValue("@senha", f.Senha);
-				cmd.Parameters.AddWithValue("@salario", f.Salario);
-				cmd.Parameters.AddWithValue("@cargo", f.Cargo);
-
-				try {
-					cmd.ExecuteNonQuery();
-				}
-				catch (MySqlException ex) {
-					// Query falhou.
-					// Possível razão: chave primária já existe.
-					MessageBox.Show(ex.Message);
-					return false;
-				}
-
-				conn.Close();
-			}
-			return true;
-		}
-
 		public string Login { get => login; set => login = value; }
         public string Senha { get => senha; set => senha = value; }
+        public bool Admin { get => admin; set => admin = value; }
 
         private string login;
         private string senha;
+        private bool admin;
     }
 }
