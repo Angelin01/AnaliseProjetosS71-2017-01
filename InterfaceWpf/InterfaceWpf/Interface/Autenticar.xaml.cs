@@ -36,23 +36,6 @@ namespace InterfaceWpf.Interface
 
             // Tentar logar
             user.AutenticarUsuario(_login, _password);
-
-            // Ver se logou
-            if (user.Login == null || user.Login == "")
-                return; // Sair se não deu
-
-
-            // Trocar para aplicação
-            Window main_window;
-
-            if (user.Login == "admin")
-                main_window = new InicioAdministracao();
-            else
-                main_window = new InicioFuncionario();
-            
-            App.Current.MainWindow = main_window;
-            this.Close();
-            App.Current.MainWindow.Show();
         }
 
 		private void AutenticarEnter(object sender, KeyEventArgs e)
