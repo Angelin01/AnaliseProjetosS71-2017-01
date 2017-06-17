@@ -111,7 +111,7 @@ namespace InterfaceWpf.Entity
 			return true;
 		}
 
-        public bool EditarDadosFuncionario() {
+        public bool EditarDadosFuncionario(string oldcpf) {
 			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
 				try {
 					conn.Open();
@@ -126,7 +126,7 @@ namespace InterfaceWpf.Entity
 				MySqlCommand cmd = new MySqlCommand();
 				cmd.Connection = conn;
 
-				cmd.CommandText = "UPDATE Funcionario SET nome=@nome, nome_da_mae=@nomemae, nome_do_pai=@nomepai, rg=@rg, ctps=@ctps, endereco=@ender, telefone=@tel, telefone_cel=@cel, email=@email, email_alt=@emailalt, login=@login, senha=@senha, salario=@salario, cargo=@cargo WHERE cpf=@cpf";
+				cmd.CommandText = "UPDATE Funcionario SET cpf=@cpf, nome=@nome, nome_da_mae=@nomemae, nome_do_pai=@nomepai, rg=@rg, ctps=@ctps, endereco=@ender, telefone=@tel, telefone_cel=@cel, email=@email, email_alt=@emailalt, login=@login, senha=@senha, salario=@salario, cargo=@cargo WHERE cpf=@oldcpf";
 				cmd.Prepare();
 				cmd.Parameters.AddWithValue("@cpf", Cpf);
 				cmd.Parameters.AddWithValue("@nome", Nome);
@@ -143,6 +143,7 @@ namespace InterfaceWpf.Entity
 				cmd.Parameters.AddWithValue("@senha", Senha);
 				cmd.Parameters.AddWithValue("@salario", Salario);
 				cmd.Parameters.AddWithValue("@cargo", Cargo);
+				cmd.Parameters.AddWithValue("@oldcpf", oldcpf);
 
 				try {
 					cmd.ExecuteNonQuery();

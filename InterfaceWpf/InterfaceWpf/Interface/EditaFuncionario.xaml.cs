@@ -93,6 +93,7 @@ namespace InterfaceWpf
 				txt_rg.Text = f.Rg;
 				txt_salario.Text = f.Salario.ToString();
 				txt_telefone.Text = f.TelefonePrincipal;
+				select_cargo.Text = f.Cargo;
 			}
 		}
 
@@ -233,6 +234,43 @@ namespace InterfaceWpf
 			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Confirma os dados inseridos?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
 			if (messageBoxResult == MessageBoxResult.Yes) {
 				Controller user = Controller.Instance;
+
+				if (!Funcionario.Validar_Cpf(txt_cpf.Text)) {
+					MessageBox.Show("O CPF inserido não é válido.\nPor favor, insira um CPF válido.", "Erro");
+					return;
+				}
+				if (!Funcionario.Validar_Numero(txt_telefone.Text)) {
+					MessageBox.Show("O telefone inserido não é válido.\nPor favor, insira um telefone válido.", "Erro");
+					return;
+				}
+				if (!Funcionario.Validar_Numero(txt_celular.Text)) {
+					MessageBox.Show("O telefone celular inserido não é válido.\nPor favor, insira um telefone celular válido.", "Erro");
+					return;
+				}
+
+				var hash_senha = SecurePasswordHasher.Hash(txt_senha.Text);
+				string oldcpf = f.Cpf;
+
+				f.Nome = txt_name.Text;
+				f.NomeMae = txt_mae.Text;
+				f.NomePai = txt_pai.Text;
+				f.Cpf = txt_cpf.Text;
+				f.Rg = txt_rg.Text;
+				f.Ctps = txt_ctps.Text;
+				f.Endereco = txt_endereco.Text;
+				f.TelefonePrincipal = txt_telefone.Text;
+				f.TelefoneCelular = txt_celular.Text;
+				f.EmailPrincipal = txt_email.Text;
+				f.EmailAlternativo = txt_email_alt.Text;
+				f.Login = txt_login.Text;
+				f.Senha = hash_senha;
+				f.Salario = Convert.ToInt32(txt_salario.Text);
+				f.Cargo = select_cargo.Text;
+
+				if (!f.EditarDadosFuncionario(oldcpf)) {
+					MessageBox.Show("Já existe outro funcionário cadastrado com este CPF.", "Erro");
+					return;
+				}
 
 				Window main_window;
 				if (user.Login == "admin") {
