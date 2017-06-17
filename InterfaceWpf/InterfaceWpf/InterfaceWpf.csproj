@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Class\Controller.cs" />
     <Compile Include="Class\InterfaceAdministrador.cs" />
+    <Compile Include="Class\InterfaceAutenticar.cs" />
     <Compile Include="Class\InterfaceFuncionario.cs" />
     <Compile Include="Class\SecurePasswordHasher.cs" />
     <Compile Include="Entity\Administrador.cs" />

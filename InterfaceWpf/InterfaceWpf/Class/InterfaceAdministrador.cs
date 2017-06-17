@@ -16,7 +16,7 @@ namespace InterfaceWpf.Class
             Window current_window = App.Current.MainWindow;
 
             Window main_window;
-            if (user.Login == "admin")
+            if (user.Admin)
             {
                 main_window = new InicioAdministracao();
             }
