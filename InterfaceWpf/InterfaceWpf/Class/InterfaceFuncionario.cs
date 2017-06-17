@@ -16,39 +16,39 @@ namespace InterfaceWpf.Class
             InterfaceAdministrador.MostrarJanelaOpcoes();
         }
 
-        public void MostrarJanelaRegistrarPedido()
+        public static void MostrarJanelaRegistrarPedido()
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new RegistraPedido();
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
-        public void MostrarJanelaConsultarPedido()
+        public static void MostrarJanelaConsultarPedido()
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new ConsultaPedido();
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
-        public void MostrarJanelaEditarPedido()
+        public static void MostrarJanelaEditarPedido()
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new EditarPedido();
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
-        public void MostrarJanelaCancelarPedido()
+        public static void MostrarJanelaCancelarPedido()
         {
             // wirow
         }
 
-        public void MostrarJanelaEncerrarPedido()
+        public static void MostrarJanelaEncerrarPedido()
         {
             // wirow
         }

@@ -27,66 +27,42 @@ namespace InterfaceWpf.Interface
 
         private void RegistrarPedido(object sender, RoutedEventArgs e)
         {
-            Window main_window = new RegistraPedido();
-            App.Current.MainWindow = main_window;
-            this.Close();
-            App.Current.MainWindow.Show();
+            InterfaceFuncionario.MostrarJanelaRegistrarPedido();
         }
 
         private void ConsultarPedidos(object sender, RoutedEventArgs e)
         {
-            Window main_window = new ConsultaPedido();
-            App.Current.MainWindow = main_window;
-            this.Close();
-            App.Current.MainWindow.Show();
+            InterfaceFuncionario.MostrarJanelaConsultarPedido();
         }
 
         private void RegistrarFuncionario(object sender, RoutedEventArgs e)
         {
-            Window main_window = new RegistraFuncionario();
-            App.Current.MainWindow = main_window;
-            this.Close();
-            App.Current.MainWindow.Show();
+            InterfaceAdministrador.MostrarJanelaCadastroFuncionario();
         }
 
         private void ConsultarFuncionarios(object sender, RoutedEventArgs e)
         {
-            Window main_window = new ConsultaFuncionario();
-            App.Current.MainWindow = main_window;
-            this.Close();
-            App.Current.MainWindow.Show();
+            InterfaceAdministrador.MostrarJanelaConsultarFuncionario();
         }
 
         private void RegistrarProduto(object sender, RoutedEventArgs e)
         {
-            Window main_window = new RegistraProduto();
-            App.Current.MainWindow = main_window;
-            this.Close();
-            App.Current.MainWindow.Show();
+            InterfaceAdministrador.MostrarJanelaRegistrarProduto();
         }
 
         private void ConsultarProdutos(object sender, RoutedEventArgs e)
         {
-            Window main_window = new ConsultaProduto();
-            App.Current.MainWindow = main_window;
-            this.Close();
-            App.Current.MainWindow.Show();
+            InterfaceAdministrador.MostrarJanelaConsultarProduto();
         }
 
         private void RegistrarIngrediente(object sender, RoutedEventArgs e)
         {
-            Window main_window = new RegistraIngrediente();
-            App.Current.MainWindow = main_window;
-            this.Close();
-            App.Current.MainWindow.Show();
+            InterfaceAdministrador.MostrarJanelaRegistrarRecurso();
         }
 
         private void ConsultarIngredientes(object sender, RoutedEventArgs e)
         {
-            Window main_window = new ConsultaIngrediente();
-            App.Current.MainWindow = main_window;
-            this.Close();
-            App.Current.MainWindow.Show();
+            InterfaceAdministrador.MostrarJanelaConsultarRecurso();
         }
 
         private void AdicionarTransacao(object sender, RoutedEventArgs e)

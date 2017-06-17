@@ -24,8 +24,8 @@ namespace InterfaceWpf.Class
             {
                 main_window = new InicioFuncionario();
             }
-            current_window.Close();
             App.Current.MainWindow = main_window;
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
@@ -33,8 +33,8 @@ namespace InterfaceWpf.Class
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new ConsultaFuncionario();
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
@@ -42,8 +42,8 @@ namespace InterfaceWpf.Class
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new RegistraFuncionario();
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
@@ -51,8 +51,8 @@ namespace InterfaceWpf.Class
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new EditaFuncionario(cpf);
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
@@ -65,8 +65,8 @@ namespace InterfaceWpf.Class
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new RegistraProduto();
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
@@ -74,8 +74,8 @@ namespace InterfaceWpf.Class
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new EditaProduto();
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
@@ -88,8 +88,8 @@ namespace InterfaceWpf.Class
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new ConsultaProduto();
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
@@ -97,8 +97,8 @@ namespace InterfaceWpf.Class
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new RegistraIngrediente();
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
@@ -106,8 +106,8 @@ namespace InterfaceWpf.Class
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new EditaIngrediente();
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
@@ -120,8 +120,8 @@ namespace InterfaceWpf.Class
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new ConsultaIngrediente();
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
@@ -129,8 +129,8 @@ namespace InterfaceWpf.Class
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new AdicionaTransacao();
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
 
@@ -138,8 +138,8 @@ namespace InterfaceWpf.Class
         {
             Controller user = Controller.Instance;
             Window current_window = App.Current.MainWindow;
-            current_window.Close();
             App.Current.MainWindow = new ConsultaRelatorio();
+            current_window.Close();
             App.Current.MainWindow.Show();
         }
     }
