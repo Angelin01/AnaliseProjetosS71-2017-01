@@ -272,7 +272,7 @@ namespace InterfaceWpf
 					return;
 				}
 
-				if (select_cargo.Text.Equals("Administrador")) {
+				if (select_cargo.Text.Equals("Administrador") && f.Cargo.Equals("Funcionario")) {
 					if (!Administrador.ElevarParaAdministrador(f)) {
 						MessageBox.Show("O funcionário foi cadastrado, mas não foi possível dar permissões de administrador a ele.", "Erro");
 					};
