@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace InterfaceWpf.Entity
@@ -244,6 +245,13 @@ namespace InterfaceWpf.Entity
 
             digito = digito + resto.ToString();
             return cpf.EndsWith(digito);
+        }
+
+        public static bool Validar_Numero(string numero) {
+            if(Regex.Match(numero, @"\(\d{2,2}\)[ ]*(([3|4]\d{3})|([9]\d{4})|([8|9]\d{3}))\-\d{4}$").Success) {
+                return true;
+            }
+            return false;
         }
 
         public void VerificarRegraDeNegocio() { }

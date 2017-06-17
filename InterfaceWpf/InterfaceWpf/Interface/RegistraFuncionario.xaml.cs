@@ -175,7 +175,17 @@ namespace InterfaceWpf
                     return;
                 }
 
-				var hash_senha = SecurePasswordHasher.Hash(box_senha.Text);
+                if(!Funcionario.Validar_Numero(box_telefone.Text)) {
+                    MessageBox.Show("O telefone inserido não é válido.\nPor favor, insira um telefone válido.", "Erro");
+                    return;
+                }
+
+                if (!Funcionario.Validar_Numero(box_telefone_cel.Text)) {
+                    MessageBox.Show("O telefone celular inserido não é válido.\nPor favor, insira um telefone celular válido.", "Erro");
+                    return;
+                }
+
+                var hash_senha = SecurePasswordHasher.Hash(box_senha.Text);
 
 				Funcionario f = new Funcionario(box_nome.Text, box_nome_da_mae.Text, box_nome_do_pai.Text, box_cpf.Text, box_rg.Text, box_ctps.Text, box_endereco.Text, box_telefone.Text, box_telefone_cel.Text, box_email.Text, box_email_alt.Text, box_login.Text, hash_senha, Convert.ToInt32(box_salario.Text), box_cargo.Text);
 
