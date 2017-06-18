@@ -10,10 +10,12 @@ namespace InterfaceWpf.Class
 {
     class InterfaceFuncionario
     {
-
-        public static void MostrarJanelaOpcoes()
-        {
-            InterfaceAdministrador.MostrarJanelaOpcoes();
+        public static void MostrarJanelaOpcoes() {
+            Window main_window = new InicioFuncionario();
+            Window current_window = App.Current.MainWindow;
+            App.Current.MainWindow = main_window;
+            current_window.Close();
+            App.Current.MainWindow.Show();
         }
 
         public static void MostrarJanelaRegistrarPedido()

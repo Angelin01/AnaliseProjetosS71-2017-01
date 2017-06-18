@@ -13,13 +13,6 @@ namespace InterfaceWpf.Class
         public static void MostrarJanelaAutenticar()
         {
             Controller user = Controller.Instance;
-
-            if (user.Login != null && user.Login != "")
-            {
-                InterfaceFuncionario.MostrarJanelaOpcoes();
-                return;
-            }
-
             Window current_window = App.Current.MainWindow;
             Window main_window = new Autenticar();
             App.Current.MainWindow = main_window;

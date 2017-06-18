@@ -10,25 +10,13 @@ namespace InterfaceWpf.Class
 {
     class InterfaceAdministrador
     {
-        public static void MostrarJanelaOpcoes()
-        {
-            Controller user = Controller.Instance;
+        public static void MostrarJanelaOpcoes() {
+            Window main_window = new InicioAdministracao();
             Window current_window = App.Current.MainWindow;
-
-            Window main_window;
-            if (user.Admin)
-            {
-                main_window = new InicioAdministracao();
-            }
-            else
-            {
-                main_window = new InicioFuncionario();
-            }
             App.Current.MainWindow = main_window;
             current_window.Close();
             App.Current.MainWindow.Show();
         }
-
         public static void MostrarJanelaConsultarFuncionario()
         {
             Controller user = Controller.Instance;

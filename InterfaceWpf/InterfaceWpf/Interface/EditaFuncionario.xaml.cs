@@ -279,7 +279,7 @@ namespace InterfaceWpf
 				}
 
 				Window main_window;
-				if (user.Login == "admin") {
+				if (user.Admin) { // Deveria ser se entrou nessa janela, mas por garantia neh...
 					main_window = new InicioAdministracao();
 				}
 				else {

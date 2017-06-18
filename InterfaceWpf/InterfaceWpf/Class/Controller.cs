@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using InterfaceWpf.Interface;
 using MySql.Data.MySqlClient;
 using InterfaceWpf.Entity;
 
@@ -114,7 +115,13 @@ namespace InterfaceWpf.Class
                     {
 						login = temp_login;
 						admin = temp_admin;
-						InterfaceFuncionario.MostrarJanelaOpcoes();
+
+                        if (admin) {
+                            InterfaceAdministrador.MostrarJanelaOpcoes();
+                        }
+                        else {
+                            InterfaceFuncionario.MostrarJanelaOpcoes();
+                        }
                     }
                 }
             }
