@@ -108,10 +108,26 @@ namespace InterfaceWpf.Entity
 
 				conn.Close();
 			}
+            if (Cargo.Equals("Administrado"))
+            {
+                Administrador adm = new Administrador(this);
+                adm.Promover();
+            }
+
 			return true;
 		}
 
         public bool EditarDadosFuncionario(string oldcpf) {
+            if(Cargo.Equals("Administrador"))
+            {
+                Administrador adm = new Administrador(this);
+                adm.Promover();
+            }
+            else
+            {
+                Administrador adm = new Administrador(this);
+                adm.Rebaixar();
+            }
 			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
 				try {
 					conn.Open();
@@ -126,7 +142,7 @@ namespace InterfaceWpf.Entity
 				MySqlCommand cmd = new MySqlCommand();
 				cmd.Connection = conn;
 
-				cmd.CommandText = "UPDATE Funcionario SET cpf=@cpf, nome=@nome, nome_da_mae=@nomemae, nome_do_pai=@nomepai, rg=@rg, ctps=@ctps, endereco=@ender, telefone=@tel, telefone_cel=@cel, email=@email, email_alt=@emailalt, login=@login, senha=@senha, salario=@salario, cargo=@cargo WHERE cpf=@oldcpf";
+				cmd.CommandText = "UPDATE Funcionario SET cpf=@cpf, nome=@nome, nome_da_mae=@nomemae, nome_do_pai=@nomepai, rg=@rg, ctps=@ctps, endereco=@ender, telefone=@tel, telefone_cel=@cel, email=@email, email_alt=@emailalt, login=@login, senha=@senha, salario=@salario WHERE cpf=@oldcpf";
 				cmd.Prepare();
 				cmd.Parameters.AddWithValue("@cpf", Cpf);
 				cmd.Parameters.AddWithValue("@nome", Nome);
@@ -142,7 +158,7 @@ namespace InterfaceWpf.Entity
 				cmd.Parameters.AddWithValue("@login", Login);
 				cmd.Parameters.AddWithValue("@senha", Senha);
 				cmd.Parameters.AddWithValue("@salario", Salario);
-				cmd.Parameters.AddWithValue("@cargo", Cargo);
+				//cmd.Parameters.AddWithValue("@cargo", Cargo);
 				cmd.Parameters.AddWithValue("@oldcpf", oldcpf);
 
 				try {
@@ -160,7 +176,11 @@ namespace InterfaceWpf.Entity
 		}
 
         public bool DeletarDadosFuncionario() {
-			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
+
+            Administrador adm = new Administrador(this);
+            adm.Rebaixar();
+
+            using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
 				try {
 					conn.Open();
 				}
@@ -170,49 +190,6 @@ namespace InterfaceWpf.Entity
 					//MessageBox.Show(ex.Message);
 					return false;
 				}
-
-				int id = -1;
-
-				using (MySqlCommand cmd = new MySqlCommand()) {
-					cmd.Connection = conn;
-					cmd.CommandText = "SELECT id_administrador FROM Administrador WHERE id_administrador = (SELECT id_funcionario FROM Funcionario WHERE cpf=@cpf)";
-					cmd.Prepare();
-					cmd.Parameters.AddWithValue("@cpf", Cpf);
-
-					MySqlDataReader reader;
-					try {
-						reader = cmd.ExecuteReader();
-					}
-					catch (MySqlException ex) {
-						// Query falhou.
-						return false;
-					}
-
-					if (reader.Read()) {
-						id = reader.GetInt32(0);
-					}
-
-					reader.Close();
-				}
-
-				if (id >= 0) {
-					using (MySqlCommand cmd = new MySqlCommand()) {
-						cmd.Connection = conn;
-						cmd.CommandText = "DELETE FROM Administrador WHERE id_administrador=@id";
-						cmd.Prepare();
-						cmd.Parameters.AddWithValue("@id", id);
-
-						try {
-							cmd.ExecuteNonQuery();
-						}
-						catch (MySqlException ex) {
-							// Query falhou.
-							//MessageBox.Show(ex.Message);
-							return false;
-						}
-					}
-				}
-
 				using (MySqlCommand cmd = new MySqlCommand()) {
 					cmd.Connection = conn;
 					cmd.CommandText = "DELETE FROM Funcionario WHERE cpf=@cpf";

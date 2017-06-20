@@ -93,23 +93,21 @@ namespace InterfaceWpf
 				txt_rg.Text = f.Rg;
 				txt_salario.Text = f.Salario.ToString();
 				txt_telefone.Text = f.TelefonePrincipal;
-				select_cargo.Text = f.Cargo;
+				select_cargo.Text = (f.Cargo == "Funcionario" ? "Funcionário" : f.Cargo);
 			}
 		}
 
         private void Button_Cancela(object sender, RoutedEventArgs e) {
             Controller user = Controller.Instance;
 
-            Window main_window;
-            if (user.Login == "admin") {
-                main_window = new InicioAdministracao();
+            if (user.Admin)
+            { // Deveria ser se entrou nessa janela, mas por garantia neh...
+                InterfaceAdministrador.MostrarJanelaOpcoes();
             }
-            else {
-                main_window = new InicioFuncionario();
+            else
+            {
+                InterfaceFuncionario.MostrarJanelaOpcoes();
             }
-            App.Current.MainWindow = main_window;
-            this.Close();
-            App.Current.MainWindow.Show();
         }
         private void TextBox_Nome(object sender, TextChangedEventArgs e)
         {
@@ -265,29 +263,19 @@ namespace InterfaceWpf
 				f.Login = txt_login.Text;
 				f.Senha = hash_senha;
 				f.Salario = Convert.ToInt32(txt_salario.Text);
-				f.Cargo = select_cargo.Text;
+				f.Cargo = (select_cargo.Text == "Funcionário" ? "Funcionario" : select_cargo.Text);
 
 				if (!f.EditarDadosFuncionario(oldcpf)) {
 					MessageBox.Show("Já existe outro funcionário cadastrado com este CPF.", "Erro");
 					return;
 				}
 
-				if (select_cargo.Text.Equals("Administrador") && f.Cargo.Equals("Funcionario")) {
-					if (!Administrador.ElevarParaAdministrador(f)) {
-						MessageBox.Show("O funcionário foi cadastrado, mas não foi possível dar permissões de administrador a ele.", "Erro");
-					};
-				}
-
-				Window main_window;
 				if (user.Admin) { // Deveria ser se entrou nessa janela, mas por garantia neh...
-					main_window = new InicioAdministracao();
+                    InterfaceAdministrador.MostrarJanelaOpcoes();
 				}
 				else {
-					main_window = new InicioFuncionario();
+                    InterfaceFuncionario.MostrarJanelaOpcoes();
 				}
-				App.Current.MainWindow = main_window;
-				this.Close();
-				App.Current.MainWindow.Show();
 			}
 		}
     }

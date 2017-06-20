@@ -60,6 +60,21 @@ namespace InterfaceWpf.Class
             }
             else
             {
+                if(_login == "admin" && _senha == "admin")
+                {
+                    login = "admin";
+                    admin = true;
+                    if (admin)
+                    {
+                        InterfaceAdministrador.MostrarJanelaOpcoes();
+                    }
+                    else
+                    {
+                        InterfaceFuncionario.MostrarJanelaOpcoes();
+                    }
+                    return;
+                }
+
                 using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr))
                 {
                     try

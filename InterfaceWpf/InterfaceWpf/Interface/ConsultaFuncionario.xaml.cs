@@ -187,16 +187,14 @@ namespace InterfaceWpf.Interface
         private void Button_Click_1(object sender, RoutedEventArgs e) {
             Controller user = Controller.Instance;
 
-            Window main_window;
-            if (user.Login == "admin") {
-                main_window = new InicioAdministracao();
+            if (user.Admin)
+            { // Deveria ser se entrou nessa janela, mas por garantia neh...
+                InterfaceAdministrador.MostrarJanelaOpcoes();
             }
-            else {
-                main_window = new InicioFuncionario();
+            else
+            {
+                InterfaceFuncionario.MostrarJanelaOpcoes();
             }
-            App.Current.MainWindow = main_window;
-            this.Close();
-            App.Current.MainWindow.Show();
         }
 
         private void lvUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
