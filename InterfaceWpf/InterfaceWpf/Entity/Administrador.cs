@@ -73,7 +73,7 @@ namespace InterfaceWpf.Entity
                     cmd.Connection = conn;
                     cmd.CommandText = "INSERT INTO Administrador (id_administrador) VALUES (@id)";
                     cmd.Prepare();
-                    cmd.Parameters.AddWithValue("@id", idAdministrador);
+                    cmd.Parameters.AddWithValue("@id", idFuncionario);
 
                     try { cmd.ExecuteNonQuery(); }
                     catch (MySqlException ex) { return false; }
