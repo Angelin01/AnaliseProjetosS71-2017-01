@@ -98,7 +98,7 @@ namespace InterfaceWpf.Entity
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "SELECT F.id_funcionario, F.cargo, A.id_administrador FROM Funcionario F LEFT JOIN Administrador A ON F.id_funcionario = A.id_administrador WHERE cpf = @cpf";
+                    cmd.CommandText = "SELECT F.id_funcionario, F.cargo, A.id_administrador FROM Funcionario F LEFT JOIN Administrador A ON F.id_funcionario = A.id_administrador WHERE F.cpf = @cpf";
                     cmd.Prepare();
                     cmd.Parameters.AddWithValue("@cpf", Cpf);
 
@@ -130,7 +130,7 @@ namespace InterfaceWpf.Entity
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "DELETE FROM Funcionario WHERE WHERE id_administrador = @id";
+                    cmd.CommandText = "DELETE FROM Administrador WHERE id_administrador = @id";
                     cmd.Prepare();
                     cmd.Parameters.AddWithValue("@id", idAdministrador);
 
@@ -141,68 +141,5 @@ namespace InterfaceWpf.Entity
                 return true;
             }
         }
-
-
-		public static bool ElevarParaAdministrador(Funcionario f)
-		{
-			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
-				try {
-					conn.Open();
-				}
-				catch (MySqlException ex) {
-					// Conexão com o banco de dados falhou.
-					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
-					//MessageBox.Show(ex.Message);
-					return false;
-				}
-
-				int idFuncionario = -1;
-
-				using (MySqlCommand cmd = new MySqlCommand()) {
-					cmd.Connection = conn;
-					cmd.CommandText = "SELECT id_funcionario FROM Funcionario WHERE cpf=@cpf";
-					cmd.Prepare();
-					cmd.Parameters.AddWithValue("@cpf", f.Cpf);
-
-					MySqlDataReader reader;
-					try {
-						reader = cmd.ExecuteReader();
-					}
-					catch (MySqlException ex) {
-						// Query falhou.
-						return false;
-					}
-
-					reader.Read();
-					idFuncionario = reader.GetInt32(0);
-
-					reader.Close();
-				}
-
-				Console.WriteLine("idFuncionario = " + idFuncionario);
-				if (idFuncionario < 0) return false;
-
-				using (MySqlCommand cmd = new MySqlCommand()) {
-					cmd.Connection = conn;
-					cmd.CommandText = "INSERT INTO Administrador (id_administrador) VALUES (@id)";
-					cmd.Prepare();
-					cmd.Parameters.AddWithValue("@id", idFuncionario);
-
-					try {
-						cmd.ExecuteNonQuery();
-					}
-					catch (MySqlException ex) {
-						Console.WriteLine(ex.Message);
-						// Query falhou.
-						// Possível razão: chave primária já existe.
-						//MessageBox.Show(ex.Message);
-						return false;
-					}
-				}
-				conn.Close();
-			}
-			return true;
-		}
-
 	}
 }

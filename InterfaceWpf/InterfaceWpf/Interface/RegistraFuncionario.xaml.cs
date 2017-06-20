@@ -28,15 +28,7 @@ namespace InterfaceWpf
         }
         private void Button_Cancela(object sender, RoutedEventArgs e) {
             Controller user = Controller.Instance;
-
-            if (user.Admin)
-            { // Deveria ser se entrou nessa janela, mas por garantia neh...
-                InterfaceAdministrador.MostrarJanelaOpcoes();
-            }
-            else
-            {
-                InterfaceFuncionario.MostrarJanelaOpcoes();
-            }
+            user.MostrarJanelaOpcoes();
         }
         private void TextBox_Nome(object sender, TextChangedEventArgs e)
         {
@@ -183,28 +175,20 @@ namespace InterfaceWpf
                     return;
                 }
 
-                var hash_senha = SecurePasswordHasher.Hash(box_senha.Text);
                 string cargo_bom = (box_cargo.Text == "Funcionário" ? "Funcionario" : box_cargo.Text);
 
 
                 Funcionario f = new Funcionario(box_nome.Text, box_nome_da_mae.Text, 
                     box_nome_do_pai.Text, box_cpf.Text, box_rg.Text, box_ctps.Text, 
                     box_endereco.Text, box_telefone.Text, box_telefone_cel.Text, 
-                    box_email.Text, box_email_alt.Text, box_login.Text, hash_senha, 
+                    box_email.Text, box_email_alt.Text, box_login.Text, box_senha.Text, 
                     Convert.ToInt32(box_salario.Text), cargo_bom);
 
 				if(!f.CadastrarDadosFuncionario()) {
 					MessageBox.Show("Já existe um funcionário cadastrado com este CPF.\nPor favor, retorne à tela de consulta e selecione a operação de Editar ou Remover.", "Erro");
 					return;
 				}
-                if (user.Admin)
-                { // Deveria ser se entrou nessa janela, mas por garantia neh...
-                    InterfaceAdministrador.MostrarJanelaOpcoes();
-                }
-                else
-                {
-                    InterfaceFuncionario.MostrarJanelaOpcoes();
-                }
+                user.MostrarJanelaOpcoes();
             }
 		}
     }

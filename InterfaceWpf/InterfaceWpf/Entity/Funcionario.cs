@@ -113,7 +113,7 @@ namespace InterfaceWpf.Entity
 				cmd.Parameters.AddWithValue("@email", EmailPrincipal);
 				cmd.Parameters.AddWithValue("@emailalt", EmailAlternativo);
 				cmd.Parameters.AddWithValue("@login", Login);
-				cmd.Parameters.AddWithValue("@senha", Senha);
+				cmd.Parameters.AddWithValue("@senha", this.criptografarSenha());
 				cmd.Parameters.AddWithValue("@salario", Salario);
 				cmd.Parameters.AddWithValue("@cargo", Cargo);
 
@@ -129,7 +129,7 @@ namespace InterfaceWpf.Entity
 
 				conn.Close();
 			}
-            if (Cargo.Equals("Administrado"))
+            if (Cargo.Equals("Administrador"))
             {
                 Administrador adm = new Administrador(this);
                 adm.Promover();
@@ -177,7 +177,7 @@ namespace InterfaceWpf.Entity
 				cmd.Parameters.AddWithValue("@email", EmailPrincipal);
 				cmd.Parameters.AddWithValue("@emailalt", EmailAlternativo);
 				cmd.Parameters.AddWithValue("@login", Login);
-				cmd.Parameters.AddWithValue("@senha", Senha);
+				cmd.Parameters.AddWithValue("@senha", this.criptografarSenha());
 				cmd.Parameters.AddWithValue("@salario", Salario);
 				//cmd.Parameters.AddWithValue("@cargo", Cargo);
 				cmd.Parameters.AddWithValue("@oldcpf", oldcpf);
@@ -288,106 +288,181 @@ namespace InterfaceWpf.Entity
             return cpf.EndsWith(digito);
         }
 
-        public static bool Validar_Numero(string numero) {
+        public static bool Validar_Numero(string numero)
+        {
             if(Regex.Match(numero, @"\(\d{2,2}\)[ ]*(([3|4]\d{3})|([9]\d{4})|([8|9]\d{3}))\-\d{4}$").Success) {
                 return true;
             }
             return false;
         }
 
+        public string verificarLogin()
+        {
+            if (String.IsNullOrEmpty(login))
+            {
+                if (String.IsNullOrEmpty(senha))
+                    return "Login e Senha em branco";
+                return "Login em branco";
+            }
+            else if (String.IsNullOrEmpty(senha))
+            {
+                return "Senha em branco";
+            }
+            else
+            {
+                return "Nada";
+            }
+        }
+
+        public static string criptografar(string texto_bruto)
+        { return SecurePasswordHasher.Hash(texto_bruto); }
+
+        public string criptografarSenha()
+        {
+            if(!SecurePasswordHasher.IsHashSupported(Senha))
+                return Funcionario.criptografar(Senha);
+            return Senha;
+        }
+
+        public bool verificarSenha(string hash_comparacao)
+        { return SecurePasswordHasher.Verify(Senha, hash_comparacao); }
+
         public void VerificarRegraDeNegocio() { }
 
-		public void AutenticarUsuario() {
+		public void AutenticarUsuario()
+        {
 			Controller user = Controller.Instance;
-			string _error;
-
-			if (login == null || login == "") {
-				_error = "Login em branco";
-
-				if (senha == null || senha == "")
-					_error = "Login e Senha em branco";
-			}
-			else if (senha == null || senha == "") {
-				_error = "Senha em branco";
-			}
-			else {
-				_error = "Nada";
-			}
-
+            string _error = this.verificarLogin();
 
 			if (_error != "Nada") {
 				MessageBox.Show(_error, "Falha no login");
+                return;
 			}
-			else {
-				if (login == "admin" && senha == "admin") {
-					user.Login = "admin";
-					user.Admin = true;
-					if (user.Admin) {
-						InterfaceAdministrador.MostrarJanelaOpcoes();
-					}
-					else {
-						InterfaceFuncionario.MostrarJanelaOpcoes();
-					}
+			if (login == "admin" && senha == "admin") {
+				user.Login = "admin";
+				user.Admin = true;
+                user.MostrarJanelaOpcoes();
+                return;
+			}
+
+			using (MySqlConnection conn = new MySqlConnection(user.connStr)) {
+				try { conn.Open(); }
+				catch (MySqlException ex) {
+					// Conexão com o banco de dados falhou.
+					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
+					//MessageBox.Show(ex.Message);
+					MessageBox.Show("Sem conexão com banco.", "Falha no login");
 					return;
 				}
 
-				using (MySqlConnection conn = new MySqlConnection(user.connStr)) {
-					try {
-						conn.Open();
-					}
-					catch (MySqlException ex) {
-						// Conexão com o banco de dados falhou.
-						// Possíveis razões: Fora do ar, ou usuário/senha incorretos
-						//MessageBox.Show(ex.Message);
-						MessageBox.Show("Sem conexão com banco.", "Falha no login");
-						return;
-					}
+				MySqlCommand cmd = new MySqlCommand();
+				cmd.Connection = conn;
 
-					MySqlCommand cmd = new MySqlCommand();
-					cmd.Connection = conn;
+				cmd.CommandText = "SELECT login, cargo, senha FROM Funcionario WHERE login=@login";
+				cmd.Prepare();
+				cmd.Parameters.AddWithValue("@login", login);
 
-					cmd.CommandText = "SELECT login, cargo, senha FROM Funcionario WHERE login=@login";
-					cmd.Prepare();
-					cmd.Parameters.AddWithValue("@login", login);
+				MySqlDataReader reader;
+				try { reader = cmd.ExecuteReader(); }
+				catch (MySqlException ex) {
+					// Query falhou.
+					MessageBox.Show("Falha na autenticação.", "Falha no login");
+					return;
+				}
 
-					MySqlDataReader reader;
-					try {
-						reader = cmd.ExecuteReader();
-					}
-					catch (MySqlException ex) {
-						// Query falhou.
-						MessageBox.Show("Falha na autenticação.", "Falha no login");
-						return;
-					}
+				string temp_login = null;
+				bool temp_admin = false;
+				string hash_senha = null;
 
-					string temp_login = null;
-					bool temp_admin = false;
-					string hash_senha = null;
+				if (reader.Read()) {
+					temp_login = reader.GetString(0);
+					temp_admin = (reader.GetString(1) == "Administrador" ? true : false);
+					hash_senha = reader.GetString(2);
+				}
 
-					if (reader.Read()) {
-						temp_login = reader.GetString(0);
-						temp_admin = (reader.GetString(1) == "Administrador" ? true : false);
-						hash_senha = reader.GetString(2);
-					}
+				conn.Close();
 
-					conn.Close();
-
-					if (hash_senha == null || !SecurePasswordHasher.Verify(senha, hash_senha)) {
-						MessageBox.Show("Login ou senha inválido(s).", "Falha no login");
-					}
-					else {
-						user.Login = temp_login;
-						user.Admin = temp_admin;
-
-						if (user.Admin) {
-							InterfaceAdministrador.MostrarJanelaOpcoes();
-						}
-						else {
-							InterfaceFuncionario.MostrarJanelaOpcoes();
-						}
-					}
+				if (String.IsNullOrEmpty(hash_senha) || !this.verificarSenha(hash_senha)) {
+					MessageBox.Show("Login ou senha inválido(s).", "Falha no login");
+				}
+				else {
+					user.Login = temp_login;
+					user.Admin = temp_admin;
+                    user.MostrarJanelaOpcoes();
 				}
 			}
 		}
-	}
+
+        public static List<Funcionario> BuscarFuncionarios(string f_cpf, string f_ctps, string f_login, string f_nome, string f_rg)
+        {
+            using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr))
+            {
+                try { conn.Open(); }
+                catch (MySqlException ex)
+                { return null; }
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+
+                cmd.CommandText = "SELECT nome, nome_da_mae, nome_do_pai, cpf, rg, ctps, endereco, telefone, telefone_cel, email, email_alt, login, senha, salario, cargo FROM Funcionario WHERE 1";
+                cmd.Prepare();
+                
+                if (!String.IsNullOrEmpty(f_cpf))
+                {
+                    cmd.CommandText += " AND cpf LIKE @cpf";
+                    cmd.Parameters.AddWithValue("@cpf", f_cpf + '%');
+                }
+                if (!String.IsNullOrEmpty(f_ctps))
+                {
+                    cmd.CommandText += " AND ctps LIKE @ctps";
+                    cmd.Parameters.AddWithValue("@ctps", f_ctps + '%');
+                }
+                if (!String.IsNullOrEmpty(f_login))
+                {
+                    cmd.CommandText += " AND login LIKE @login";
+                    cmd.Parameters.AddWithValue("@login", '%' + f_login + '%');
+                }
+                if (!String.IsNullOrEmpty(f_nome))
+                {
+                    cmd.CommandText += " AND nome LIKE @nome";
+                    cmd.Parameters.AddWithValue("@nome", '%' + f_nome + '%');
+                }
+                if (!String.IsNullOrEmpty(f_rg))
+                {
+                    cmd.CommandText += " AND rg LIKE @rg";
+                    cmd.Parameters.AddWithValue("@rg", f_rg + '%');
+                }
+                
+                MySqlDataReader reader;
+                try { reader = cmd.ExecuteReader(); }
+                catch (MySqlException ex) { return null; }
+
+                List<Funcionario> funcionarios = new List<Funcionario>();
+
+                while (reader.Read())
+                {
+                    funcionarios.Add(new Funcionario(
+                        reader.GetString(0),
+                        reader.GetString(1),
+                        reader.GetString(2),
+                        reader.GetString(3),
+                        reader.GetString(4),
+                        reader.GetString(5),
+                        reader.GetString(6),
+                        reader.GetString(7),
+                        reader.GetString(8),
+                        reader.GetString(9),
+                        reader.GetString(10),
+                        reader.GetString(11),
+                        reader.GetString(12),
+                        reader.GetInt32(13),
+                        reader.GetString(14)
+                        ));
+                }
+                conn.Close();
+
+                return funcionarios;
+            }
+        }
+    }
 }

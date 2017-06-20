@@ -30,128 +30,19 @@ namespace InterfaceWpf.Interface
 
 		public void AtualizarLista()
 		{
-			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
-				try {
-					conn.Open();
-				}
-				catch (MySqlException ex) {
-					// Conexão com o banco de dados falhou.
-					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
-					//MessageBox.Show(ex.Message);
-					return;
-				}
+            List<Funcionario> list = Funcionario.BuscarFuncionarios(null, null, null, null, null);
 
-				MySqlCommand cmd = new MySqlCommand();
-				cmd.Connection = conn;
-
-				cmd.CommandText = "SELECT nome, nome_da_mae, nome_do_pai, cpf, rg, ctps, endereco, telefone, telefone_cel, email, email_alt, login, senha, salario, cargo FROM Funcionario";
-
-				MySqlDataReader reader;
-				try {
-					reader = cmd.ExecuteReader();
-				}
-				catch (MySqlException ex) {
-					// Query falhou.
-					return;
-				}
-
-				while (reader.Read()) {
-					Funcionario f = new Funcionario(
-						reader.GetString(0),
-						reader.GetString(1),
-						reader.GetString(2),
-						reader.GetString(3),
-						reader.GetString(4),
-						reader.GetString(5),
-						reader.GetString(6),
-						reader.GetString(7),
-						reader.GetString(8),
-						reader.GetString(9),
-						reader.GetString(10),
-						reader.GetString(11),
-						reader.GetString(12),
-						reader.GetInt32(13),
-						reader.GetString(14)
-						);
-					lvUsers.Items.Add(f);
-				}
-
-				conn.Close();
-			}
+            foreach (Funcionario f in list)
+                lvUsers.Items.Add(f);
 		}
 
 		public void FiltrarLista()
 		{
-			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
-				try {
-					conn.Open();
-				}
-				catch (MySqlException ex) {
-					// Conexão com o banco de dados falhou.
-					// Possíveis razões: Fora do ar, ou usuário/senha incorretos
-					//MessageBox.Show(ex.Message);
-					return;
-				}
+            List<Funcionario> list = Funcionario.BuscarFuncionarios(txtFiltroCPF.Text, txtFiltroCTPS.Text, txtFiltroLogin.Text, txtFiltroNome.Text, txtFiltroRG.Text);
 
-				MySqlCommand cmd = new MySqlCommand();
-				cmd.Connection = conn;
-
-				cmd.CommandText = "SELECT nome, nome_da_mae, nome_do_pai, cpf, rg, ctps, endereco, telefone, telefone_cel, email, email_alt, login, senha, salario, cargo FROM Funcionario WHERE 1";
-				cmd.Prepare();
-				if (!String.IsNullOrEmpty(txtFiltroCPF.Text)) {
-					cmd.CommandText += " AND cpf=@cpf";
-					cmd.Parameters.AddWithValue("@cpf", txtFiltroCPF.Text);
-				}
-				if (!String.IsNullOrEmpty(txtFiltroCTPS.Text)) {
-					cmd.CommandText += " AND ctps=@ctps";
-					cmd.Parameters.AddWithValue("@ctps", txtFiltroCTPS.Text);
-				}
-				if (!String.IsNullOrEmpty(txtFiltroLogin.Text)) {
-					cmd.CommandText += " AND login=@login";
-					cmd.Parameters.AddWithValue("@login", txtFiltroLogin.Text);
-				}
-				if (!String.IsNullOrEmpty(txtFiltroNome.Text)) {
-					cmd.CommandText += " AND nome=@nome";
-					cmd.Parameters.AddWithValue("@nome", txtFiltroNome.Text);
-				}
-				if (!String.IsNullOrEmpty(txtFiltroRG.Text)) {
-					cmd.CommandText += " AND rg=@rg";
-					cmd.Parameters.AddWithValue("@rg", txtFiltroRG.Text);
-				}
-
-				MySqlDataReader reader;
-				try {
-					reader = cmd.ExecuteReader();
-				}
-				catch (MySqlException ex) {
-					// Query falhou.
-					return;
-				}
-
-				while (reader.Read()) {
-					Funcionario f = new Funcionario(
-						reader.GetString(0),
-						reader.GetString(1),
-						reader.GetString(2),
-						reader.GetString(3),
-						reader.GetString(4),
-						reader.GetString(5),
-						reader.GetString(6),
-						reader.GetString(7),
-						reader.GetString(8),
-						reader.GetString(9),
-						reader.GetString(10),
-						reader.GetString(11),
-						reader.GetString(12),
-						reader.GetInt32(13),
-						reader.GetString(14)
-						);
-					lvUsers.Items.Add(f);
-				}
-
-				conn.Close();
-			}
-		}
+            foreach (Funcionario f in list)
+                lvUsers.Items.Add(f);
+        }
 
 		private void Button_Click(object sender, RoutedEventArgs e)
         {

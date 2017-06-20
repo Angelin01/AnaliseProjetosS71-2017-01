@@ -36,6 +36,14 @@ namespace InterfaceWpf.Class
 		public string Login { get => login; set => login = value; }
         public bool Admin { get => admin; set => admin = value; }
 
+        public void MostrarJanelaOpcoes()
+        {
+            if (Admin)
+                InterfaceAdministrador.MostrarJanelaOpcoes();
+            else
+                InterfaceFuncionario.MostrarJanelaOpcoes();
+        }
+
         private string login;
         private bool admin;
     }
