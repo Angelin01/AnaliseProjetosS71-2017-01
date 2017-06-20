@@ -1,4 +1,5 @@
 ﻿using InterfaceWpf.Class;
+using InterfaceWpf.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,8 +35,9 @@ namespace InterfaceWpf.Interface
 
             Controller user = Controller.Instance;
 
-            // Tentar logar
-            user.AutenticarUsuario(_login, _password);
+			// Tentar logar
+			Funcionario usuario = new Funcionario(_login, _password);
+			usuario.AutenticarUsuario();
         }
 
 		private void AutenticarEnter(object sender, KeyEventArgs e)

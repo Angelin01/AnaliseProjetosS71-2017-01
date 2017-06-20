@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace InterfaceWpf.Entity
 {
@@ -62,6 +63,26 @@ namespace InterfaceWpf.Entity
             this.Cargo = cargo;
         }
 
+		// Construtor para login
+		public Funcionario(string login, string senha)
+		{
+			this.Nome = null;
+			this.NomeMae = null;
+			this.NomePai = null;
+			this.Cpf = null;
+			this.Rg = null;
+			this.Ctps = null;
+			this.Endereco = null;
+			this.TelefonePrincipal = null;
+			this.TelefoneCelular = null;
+			this.EmailPrincipal = null;
+			this.EmailAlternativo = null;
+			this.Login = login;
+			this.Senha = senha;
+			this.Salario = 0;
+			this.Cargo = null;
+		}
+		
 		// Métodos
 		public bool CadastrarDadosFuncionario() {
 			using (MySqlConnection conn = new MySqlConnection(Controller.Instance.connStr)) {
@@ -275,5 +296,98 @@ namespace InterfaceWpf.Entity
         }
 
         public void VerificarRegraDeNegocio() { }
-    }
+
+		public void AutenticarUsuario() {
+			Controller user = Controller.Instance;
+			string _error;
+
+			if (login == null || login == "") {
+				_error = "Login em branco";
+
+				if (senha == null || senha == "")
+					_error = "Login e Senha em branco";
+			}
+			else if (senha == null || senha == "") {
+				_error = "Senha em branco";
+			}
+			else {
+				_error = "Nada";
+			}
+
+
+			if (_error != "Nada") {
+				MessageBox.Show(_error, "Falha no login");
+			}
+			else {
+				if (login == "admin" && senha == "admin") {
+					user.Login = "admin";
+					user.Admin = true;
+					if (user.Admin) {
+						InterfaceAdministrador.MostrarJanelaOpcoes();
+					}
+					else {
+						InterfaceFuncionario.MostrarJanelaOpcoes();
+					}
+					return;
+				}
+
+				using (MySqlConnection conn = new MySqlConnection(user.connStr)) {
+					try {
+						conn.Open();
+					}
+					catch (MySqlException ex) {
+						// Conexão com o banco de dados falhou.
+						// Possíveis razões: Fora do ar, ou usuário/senha incorretos
+						//MessageBox.Show(ex.Message);
+						MessageBox.Show("Sem conexão com banco.", "Falha no login");
+						return;
+					}
+
+					MySqlCommand cmd = new MySqlCommand();
+					cmd.Connection = conn;
+
+					cmd.CommandText = "SELECT login, cargo, senha FROM Funcionario WHERE login=@login";
+					cmd.Prepare();
+					cmd.Parameters.AddWithValue("@login", login);
+
+					MySqlDataReader reader;
+					try {
+						reader = cmd.ExecuteReader();
+					}
+					catch (MySqlException ex) {
+						// Query falhou.
+						MessageBox.Show("Falha na autenticação.", "Falha no login");
+						return;
+					}
+
+					string temp_login = null;
+					bool temp_admin = false;
+					string hash_senha = null;
+
+					if (reader.Read()) {
+						temp_login = reader.GetString(0);
+						temp_admin = (reader.GetString(1) == "Administrador" ? true : false);
+						hash_senha = reader.GetString(2);
+					}
+
+					conn.Close();
+
+					if (hash_senha == null || !SecurePasswordHasher.Verify(senha, hash_senha)) {
+						MessageBox.Show("Login ou senha inválido(s).", "Falha no login");
+					}
+					else {
+						user.Login = temp_login;
+						user.Admin = temp_admin;
+
+						if (user.Admin) {
+							InterfaceAdministrador.MostrarJanelaOpcoes();
+						}
+						else {
+							InterfaceFuncionario.MostrarJanelaOpcoes();
+						}
+					}
+				}
+			}
+		}
+	}
 }
