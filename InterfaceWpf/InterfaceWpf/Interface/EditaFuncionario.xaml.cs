@@ -228,7 +228,11 @@ namespace InterfaceWpf
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-			
+			if (!ValidateForm()) {
+				MessageBox.Show("Todos os campos devem estar preenchidos.", "Erro");
+				return;
+			}
+
 			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Confirma os dados inseridos?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
 			if (messageBoxResult == MessageBoxResult.Yes) {
 				Controller user = Controller.Instance;
